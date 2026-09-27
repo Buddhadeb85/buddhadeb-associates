@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Parivar Rakshak - Unified Web + WhatsApp Family Financial Defence System. Smart Budget, Education Inflation Shock, HLV Audit, Sunk-Cost Recovery & Lead Generation." />
+  <title>Parivar Rakshak | Unified Web + WhatsApp Edition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0f172a;
+      --bg-card: #1e293b;
+      --bg-input: #0b1121;
+      --border-light: #334155;
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+      --accent-yellow: #f59e0b;
+      --accent-blue: #3b82f6;
+      --accent-purple: #a855f7;
+      --accent-orange: #f97316;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-family: 'Inter', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+    body { background-color: var(--bg-main); color: var(--text-main); padding-bottom: 100px; line-height: 1.5; }
+    .navbar {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(30, 41, 59, 0.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; }
+    .nav-logo {
+      background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+      color: #fff; font-weight: 800; font-size: 18px;
+      width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
+      border-radius: 10px; box-shadow: 0 0 18px rgba(59, 130, 246, 0.45);
+    }
+    .nav-title h1 { font-size: 1.15rem; margin: 0; color: #fff; letter-spacing: -0.4px; }
+    .nav-title p { font-size: 0.7rem; margin: 0; color: var(--accent-yellow); font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; }
+    .nav-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .btn {
+      padding: 8px 14px; border-radius: 7px; font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 5px;
+      transition: all 0.2s ease; text-decoration: none; color: #fff; white-space: nowrap;
+    }
+    .btn-calc { background: var(--accent-blue); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+    .btn-calc:hover { background: #2563eb; transform: translateY(-1px); }
+    .btn-save { background: var(--accent-green); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
+    .btn-save:hover { background: #059669; transform: translateY(-1px); }
+    .btn-print { background: #475569; }
+    .btn-print:hover { background: #334155; }
+    .btn-preset { background: #334155; border: 1px solid var(--border-light); }
+    .btn-csv { background: var(--accent-purple); box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3); }
+    .btn-csv:hover { background: #9333ea; transform: translateY(-1px); }
+    .btn-wa { background: #25D366; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35); }
+    .btn-wa:hover { background: #1da851; transform: translateY(-1px); }
+    .lang-select {
+      background: var(--bg-input); border: 1px solid var(--border-light); color: var(--text-main);
+      padding: 8px 10px; border-radius: 7px; font-size: 0.82rem; font-weight: 600; outline: none; cursor: pointer;
+    }
+    .settings-panel {
+      background: rgba(15, 23, 42, 0.98); border: 1px solid var(--border-light);
+      padding: 18px; border-radius: 10px; position: absolute; top: 70px; right: 20px;
+      z-index: 2000; box-shadow: 0 12px 36px rgba(0,0,0,0.55); display: none; width: 320px;
+    }
+    .settings-panel.open { display: block; animation: dropDown 0.28s ease; }
+    @keyframes dropDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+    .settings-panel h4 { margin-bottom: 14px; color: var(--accent-yellow); font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .pro-banner {
+      background: linear-gradient(90deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid var(--accent-orange); border-left: 6px solid var(--accent-orange);
+      margin: 18px auto; max-width: 1340px; padding: 16px 22px; border-radius: 12px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.28);
+    }
+    .pro-banner-text h3 { color: var(--text-main); font-size: 1.05rem; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+    .pro-banner-text p { color: var(--text-muted); font-size: 0.82rem; max-width: 820px; line-height: 1.5; margin: 0; }
+    .btn-advisor {
+      background: linear-gradient(135deg, #f97316, #ea580c); color: #fff;
+      padding: 10px 18px; border-radius: 8px; font-weight: 700; text-decoration: none;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.4); transition: transform 0.2s; white-space: nowrap;
+    }
+    .btn-advisor:hover { transform: translateY(-2px); }
+    .container { max-width: 1340px; margin: 0 auto; padding: 0 14px; }
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border-light);
+      border-radius: 12px; padding: 18px; margin-bottom: 18px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .card-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border-light);
+    }
+    .card-header h2 { font-size: 1.02rem; font-weight: 700; }
+    .card-badge { font-size: 0.72rem; padding: 3px 9px; border-radius: 6px; background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); font-weight: 700; }
+    .sub-title { font-size: 0.82rem; font-weight: 700; color: var(--accent-yellow); margin: 14px 0 10px 0; text-transform: uppercase; letter-spacing: 0.5px; }
+    .grid-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 12px; }
+    .field-group { display: flex; flex-direction: column; gap: 5px; }
+    .field-group label { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); }
+    .field-group input, .field-group select {
+      background: var(--bg-input); border: 1px solid var(--border-light); color: var(--text-main);
+      padding: 9px 12px; border-radius: 8px; font-size: 0.88rem; outline: none; font-weight: 600; width: 100%; transition: border 0.2s;
+    }
+    .field-group input:focus, .field-group select:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); }
+    .highlight-income { border-color: rgba(16, 185, 129, 0.45) !important; background: rgba(16, 185, 129, 0.06) !important; }
+    .highlight-asset { border-color: rgba(59, 130, 246, 0.45) !important; background: rgba(59, 130, 246, 0.06) !important; }
+    .highlight-debt { border-color: rgba(239, 68, 68, 0.45) !important; background: rgba(239, 68, 68, 0.06) !important; }
+    .ribbon { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; background: rgba(0,0,0,0.22); padding: 14px; border-radius: 10px; border: 1px solid var(--border-light); margin-top: 18px; }
+    .ribbon-item { display: flex; flex-direction: column; gap: 3px; border-left: 3px solid var(--border-light); padding-left: 10px; }
+    .ribbon-lbl { font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; }
+    .ribbon-val { font-size: 1.2rem; font-weight: 800; }
+    .tabs-wrap { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 2px solid var(--border-light); overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
+    .tabs-wrap::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      background: transparent; border: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 600;
+      padding: 11px 16px; cursor: pointer; border-bottom: 3px solid transparent; white-space: nowrap; transition: 0.2s;
+    }
+    .tab-btn:hover { color: var(--text-main); }
+    .tab-btn.active { color: var(--accent-blue); border-bottom: 3px solid var(--accent-blue); }
+    .tab-pane { display: none; animation: fadeIn 0.28s ease; }
+    .tab-pane.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .layout-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .budget-tier { background: rgba(0,0,0,0.22); border: 1px solid var(--border-light); border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+    .tier-header { font-size: 0.8rem; font-weight: 800; display: flex; justify-content: space-between; margin-bottom: 10px; padding-bottom: 7px; border-bottom: 1px dashed rgba(255,255,255,0.12); text-transform: uppercase; letter-spacing: 0.3px; }
+    .t1 { color: var(--accent-green); }
+    .t2 { color: var(--accent-red); }
+    .t3 { color: var(--accent-blue); }
+    .t4 { color: var(--accent-purple); }
+    .t5 { color: var(--accent-yellow); }
+    .budget-item { display: flex; justify-content: space-between; font-size: 0.86rem; margin-bottom: 7px; color: var(--text-muted); }
+    .budget-val { font-weight: 700; color: var(--text-main); }
+    .budget-total { display: flex; justify-content: space-between; font-weight: 800; font-size: 1rem; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-light); }
+    .progress-bar-stack { display: flex; height: 20px; border-radius: 8px; overflow: hidden; margin: 12px 0; background: var(--bg-input); border: 1px solid var(--border-light); }
+    .bar-t1 { background: var(--accent-green); transition: width 0.4s; }
+    .bar-t2 { background: var(--accent-red); transition: width 0.4s; }
+    .bar-t3 { background: var(--accent-blue); transition: width 0.4s; }
+    .bar-t4 { background: var(--accent-purple); transition: width 0.4s; }
+    .bar-t5 { background: var(--accent-yellow); transition: width 0.4s; }
+    .table-responsive { width: 100%; overflow-x: auto; border-radius: 8px; }
+    .pro-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; margin-top: 12px; min-width: 580px; }
+    .pro-table th { background: rgba(0,0,0,0.32); color: var(--accent-blue); padding: 11px 14px; text-align: left; font-weight: 700; text-transform: uppercase; font-size: 0.72rem; border-bottom: 2px solid var(--border-light); }
+    .pro-table td { padding: 11px 14px; border-bottom: 1px solid var(--border-light); color: var(--text-main); font-weight: 500; }
+    .stat-box { padding: 14px; border-radius: 10px; margin-bottom: 12px; background: rgba(0,0,0,0.22); border: 1px solid var(--border-light); display: flex; flex-direction: column; gap: 3px; }
+    .stat-lbl { font-size: 0.76rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; }
+    .stat-val { font-size: 1.3rem; font-weight: 800; }
+    .alert-banner { padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 0.86rem; font-weight: 600; display: flex; align-items: center; gap: 10px; border-left: 5px solid; }
+    .alert-danger { background: rgba(239, 68, 68, 0.12); border-color: var(--accent-red); color: #fca5a5; }
+    .alert-success { background: rgba(16, 185, 129, 0.12); border-color: var(--accent-green); color: #6ee7b7; }
+    .alert-warning { background: rgba(245, 158, 11, 0.12); border-color: var(--accent-yellow); color: #fcd34d; }
+    .toast {
+      position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%);
+      background: var(--accent-green); color: #fff; padding: 12px 22px; border-radius: 8px;
+      font-weight: 600; font-size: 0.9rem; box-shadow: 0 10px 28px rgba(0,0,0,0.5);
+      transition: bottom 0.35s; z-index: 3000; max-width: 90%; text-align: center;
+    }
+    .toast.show { bottom: 36px; }
+    .floating-cta {
+      position: fixed; bottom: 28px; right: 28px; z-index: 2000;
+      background: #25D366; color: #fff; text-decoration: none;
+      width: 56px; height: 56px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+      font-size: 26px; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5); transition: 0.25s;
+    }
+    .floating-cta:hover { transform: scale(1.08); }
+    .item-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+    .summary-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;
+      background: rgba(0,0,0,0.18); padding: 12px; border-radius: 8px; border: 1px solid var(--border-light);
+    }
+    .summary-item { display: flex; flex-direction: column; gap: 2px; }
+    .summary-lbl { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+    .summary-val { font-size: 1.05rem; font-weight: 800; }
+    .risk-card { background: rgba(0,0,0,0.25); border-radius: 10px; padding: 16px; margin-bottom: 14px; border: 1px solid var(--border-light); }
+    .risk-item { display: flex; gap: 10px; margin-bottom: 10px; font-size: 0.88rem; line-height: 1.45; }
+    .risk-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .risk-red { background: var(--accent-red); }
+    .risk-orange { background: var(--accent-orange); }
+    .risk-yellow { background: var(--accent-yellow); }
+    .edu-shock { background: linear-gradient(135deg, rgba(239,68,68,0.12), rgba(249,115,22,0.08)); border: 1px solid rgba(239,68,68,0.35); border-radius: 12px; padding: 18px; margin-bottom: 18px; }
+    .edu-child { background: rgba(0,0,0,0.25); border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; }
+    .cta-box { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .cta-box .btn { flex: 1; min-width: 160px; justify-content: center; padding: 12px 16px; font-size: 0.9rem; }
+    @media (max-width: 900px) {
+      .layout-2col { grid-template-columns: 1fr; }
+      .navbar { flex-direction: column; padding: 10px 12px; gap: 10px; }
+      .nav-actions { width: 100%; justify-content: center; }
+      .btn { flex: 1; justify-content: center; font-size: 0.78rem; padding: 9px 8px; }
+      .pro-banner { text-align: center; justify-content: center; margin: 10px 12px; padding: 14px; }
+      .floating-cta { bottom: 14px; right: 14px; width: 50px; height: 50px; font-size: 22px; }
+      .settings-panel { right: 10px; left: 10px; width: auto; top: 110px; }
+      .ribbon { grid-template-columns: 1fr 1fr; }
+    }
+    @media print {
+      .navbar, .pro-banner, .tabs-wrap, .floating-cta, .settings-panel, .btn, .cta-box { display: none !important; }
+      body { background: #fff !important; color: #000 !important; padding: 0; }
+      .card, input, select { border: 1px solid #ccc !important; background: #fff !important; color: #000 !important; box-shadow: none !important; }
+      .tab-pane { display: block !important; margin-bottom: 24px; page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY TOP NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="nav-logo">PR</div>
+      <div class="nav-title">
+        <h1 data-i18n="app_title">Parivar Rakshak</h1>
+        <p data-i18n="app_subtitle">Web + WhatsApp Unified Edition</p>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <div style="display:flex; gap:8px; width:100%; justify-content:center; flex-wrap:wrap;">
+        <select id="app_lang" class="lang-select" onchange="changeLanguage(this.value)" style="min-width:110px;">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="bn">বাংলা</option>
+          <option value="mr">मराठी</option>
+          <option value="gu">ગુજરાતી</option>
+        </select>
+        <button class="btn btn-preset" onclick="toggleSettings()">⚙️ <span data-i18n="btn_settings">Settings</span></button>
+      </div>
+      <div style="display:flex; gap:8px; width:100%; justify-content:center; flex-wrap:wrap;">
+        <button class="btn btn-preset" onclick="loadSample()" style="background:#64748b;">📊 <span data-i18n="btn_demo">Demo</span></button>
+        <button class="btn btn-calc" onclick="runAllCalculations(true)">⚡ <span data-i18n="btn_calc">Calc</span></button>
+        <button class="btn btn-save" onclick="saveData()">💾 <span data-i18n="btn_save">Save</span></button>
+        <button class="btn btn-csv" onclick="exportCSV()">📥 <span data-i18n="btn_csv">CSV</span></button>
+        <button class="btn btn-print" onclick="window.print()">🖨️ <span data-i18n="btn_print">PDF</span></button>
+        <a id="nav_wa_btn" href="#" target="_blank" class="btn btn-wa">💬 <span data-i18n="btn_wa">WhatsApp</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SETTINGS -->
+  <div class="settings-panel" id="settings_modal">
+    <h4 data-i18n="settings_title">Advanced Economic Assumptions</h4>
+    <div class="field-group" style="margin-bottom:10px;">
+      <label data-i18n="cfg_equity">Expected Equity Return (CAGR %)</label>
+      <input type="number" id="cfg_equity" value="12" step="0.5" min="5" max="20" oninput="runAllCalculations(false)">
+    </div>
+    <div class="field-group" style="margin-bottom:10px;">
+      <label data-i18n="cfg_edu_inf">Education Inflation (%)</label>
+      <input type="number" id="cfg_edu_inf" value="10" step="0.5" min="4" max="15" oninput="runAllCalculations(false)">
+    </div>
+    <div class="field-group" style="margin-bottom:10px;">
+      <label data-i18n="cfg_deg_cost">Base Degree Cost Today (₹)</label>
+      <input type="number" id="cfg_deg_cost" value="1500000" step="100000" min="500000" oninput="runAllCalculations(false)">
+    </div>
+    <div class="field-group" style="margin-bottom:10px;">
+      <label data-i18n="cfg_term_cost">Pure Term Cost (₹/yr for ₹1 Cr)</label>
+      <input type="number" id="cfg_term_cost" value="12000" step="500" min="5000" oninput="runAllCalculations(false)">
+    </div>
+    <div class="field-group" style="margin-bottom:10px;">
+      <label data-i18n="cfg_wa_number">Your WhatsApp Number (with country code)</label>
+      <input type="text" id="cfg_wa_number" value="919999999999" placeholder="919876543210" oninput="updateWhatsAppLinks()">
+    </div>
+    <button class="btn btn-calc" style="width:100%; justify-content:center; margin-top:10px;" onclick="toggleSettings()" data-i18n="btn_apply">Apply & Close</button>
+  </div>
+
+  <!-- MARKETING BANNER -->
+  <div class="pro-banner">
+    <div class="pro-banner-text">
+      <h3>🏛️ <span data-i18n="banner_title">Expert Portfolio Restructuring & Tax Advisory</span></h3>
+      <p data-i18n="banner_text">Same data model as WhatsApp bot. Save here → data appears in your Google Sheet. Advisor can continue the conversation on WhatsApp with full context.</p>
+    </div>
+    <a href="https://buddhadebassociates.com" target="_blank" rel="noopener" class="btn-advisor" data-i18n="banner_btn">🌐 Consult Buddhadeb Associates</a>
+  </div>
+
+  <div class="container">
+
+    <!-- MASTER PROFILE -->
+    <div class="card profile-card">
+      <div class="card-header">
+        <h2 data-i18n="profile_title">👤 Master Profile & Inputs</h2>
+        <span class="card-badge" data-i18n="profile_badge">Shared with WhatsApp Bot</span>
+      </div>
+
+      <div class="sub-title" data-i18n="sec_id">1. Identification & Dependents</div>
+      <div class="grid-form">
+        <div class="field-group"><label data-i18n="lbl_name">Client Name</label><input type="text" id="u_name" value="" placeholder="e.g. Sunil Verma" oninput="runAllCalculations()"></div>
+        <div class="field-group"><label data-i18n="lbl_mobile">Mobile Number (10 digit)</label><input type="tel" id="u_mobile" value="" placeholder="9876543210" oninput="runAllCalculations(); updateWhatsAppLinks();"></div>
+        <div class="field-group"><label data-i18n="lbl_email">Email (Optional)</label><input type="email" id="u_email" value="" placeholder="name@email.com" oninput="runAllCalculations()"></div>
+        <div class="field-group"><label data-i18n="lbl_age">Age (Yrs)</label><input type="number" inputmode="numeric" id="u_age" value="30" min="18" max="75" oninput="runAllCalculations()"></div>
+        <div class="field-group"><label data-i18n="lbl_parents">Elderly Parents (Count)</label><input type="number" inputmode="numeric" id="u_dep_parents" value="0" min="0" max="4" oninput="runAllCalculations()"></div>
+        <div class="field-group"><label data-i18n="lbl_children">Children (Count)</label><input type="number" inputmode="numeric" id="u_dep_children" value="0" min="0" max="5" oninput="updateChildrenFields()"></div>
+      </div>
+      <div id="children_ages_container" class="grid-form" style="margin-top:0;"></div>
+
+      <div class="sub-title" data-i18n="sec_income">2. Monthly Cash Inflows (₹)</div>
+      <div class="grid-form">
+        <div class="field-group"><label data-i18n="lbl_salary">Net Salary</label><input type="number" inputmode="numeric" id="inc_salary" value="" placeholder="0" class="highlight-income" oninput="runAllCalculations()"></div>
+        <div class="field-group"><label data-i18n="lbl_business">Business Profit</label><input type="number" inputmode="numeric" id="inc_business" value="" placeholder="0" class="highlight-income" oninput="runAllCalculations()"></div>
+        <div class="field-group"><label data-i18n="lbl_other">Other (Rent / Freelance / Farm)</label><input type="number" inputmode="numeric" id="inc_other" value="" placeholder="0" class="highlight-income" oninput="runAllCalculations()"></div>
+      </div>
+
+      <div class="sub-title" data-i18n="sec_wealth">3. Wealth & Debts (₹)</div>
+      <div class="grid-form">
+        <div class="field-group"><label data-i18n="lbl_cash">Liquid Savings (Cash / FD)</label><input type="number" inputmode="numeric" id="ast_cash" value="" placeholder="0" class="highlight-asset" oninput="runAllCalculations()"></div>
+        <div class="field-group"><label data-i18n="lbl_invest">Investments (PPF / Stocks / Gold)</label><input type="number" inputmode="numeric" id="ast_invest" value="" placeholder="0" class="highlight-asset" oninput="runAllCalculations()"></div>
+        <div class="field-group"><label data-i18n="lbl_home">Home Loan Balance</label><input type="number" inputmode="numeric" id="lia_home" value="" placeholder="0" class="highlight-debt" oninput="runAllCalculations()"></div>
+        <div class="field-group"><label data-i18n="lbl_toxic">Toxic Debt (Gold / PL / CC)</label><input type="number" inputmode="numeric" id="lia_toxic" value="" placeholder="0" class="highlight-debt" oninput="runAllCalculations()"></div>
+        <div class="field-group"><label data-i18n="lbl_living">Current Monthly Living Spend</label><input type="number" inputmode="numeric" id="exp_living" value="" placeholder="e.g. 20000" oninput="runAllCalculations()"></div>
+      </div>
+
+      <div class="sub-title" data-i18n="sec_policy">4. Existing Life Policies (Sunk-Cost Audit)</div>
+      <div class="grid-form">
+        <div class="field-group"><label data-i18n="lbl_premium">Annual Premium Paid (₹/Yr)</label><input type="number" inputmode="numeric" id="pol_premium" value="" placeholder="0" oninput="runAllCalculations()"></div>
+        <div class="field-group"><label data-i18n="lbl_paid">Years Already Paid</label><input type="number" inputmode="numeric" id="pol_paid" value="1" min="1" oninput="runAllCalculations()"></div>
+        <div class="field-group"><label data-i18n="lbl_term">Total Policy Term (Yrs)</label><input type="number" inputmode="numeric" id="pol_term" value="20" min="5" oninput="runAllCalculations()"></div>
+        <div class="field-group"><label data-i18n="lbl_sa">Sum Assured (₹ Cover)</label><input type="number" inputmode="numeric" id="pol_sa" value="" placeholder="0" oninput="runAllCalculations()"></div>
+        <div class="field-group"><label data-i18n="lbl_mat">Expected Maturity (₹) — Optional</label><input type="number" inputmode="numeric" id="pol_mat" value="" placeholder="Leave blank to auto-estimate" oninput="runAllCalculations()"></div>
+      </div>
+
+      <div class="ribbon">
+        <div class="ribbon-item"><span class="ribbon-lbl" data-i18n="rb_inc">Monthly Inflow</span><span class="ribbon-val" id="rb_inc" style="color:var(--accent-green);">₹0</span></div>
+        <div class="ribbon-item"><span class="ribbon-lbl" data-i18n="rb_ast">Total Assets</span><span class="ribbon-val" id="rb_ast" style="color:var(--accent-blue);">₹0</span></div>
+        <div class="ribbon-item"><span class="ribbon-lbl" data-i18n="rb_debt">Total Debt</span><span class="ribbon-val" id="rb_debt" style="color:var(--accent-red);">₹0</span></div>
+        <div class="ribbon-item"><span class="ribbon-lbl" data-i18n="rb_nw">Net Worth</span><span class="ribbon-val" id="rb_nw">₹0</span></div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs-wrap">
+      <button class="tab-btn active" onclick="switchTab('tab_budget', this)" data-i18n="tab1">📊 1. Auto-Smart Budget</button>
+      <button class="tab-btn" onclick="switchTab('tab_sunkcost', this)" data-i18n="tab2">🔄 2. Sunk-Cost Engine</button>
+      <button class="tab-btn" onclick="switchTab('tab_audit', this)" data-i18n="tab3">🛡️ 3. Survival Audit</button>
+      <button class="tab-btn" onclick="switchTab('tab_action', this)" data-i18n="tab4">📋 4. Action + Risks</button>
+    </div>
+
+    <!-- TAB 1: BUDGET -->
+    <div id="tab_budget" class="tab-pane active">
+      <div id="budget_alert"></div>
+      <div class="layout-2col">
+        <div>
+          <h3 style="margin-bottom: 14px; color:var(--text-muted); font-size:0.95rem;">Recommended Monthly Allocations</h3>
+          <div class="budget-tier">
+            <div class="tier-header t1"><span>Tier 1: Essential Armor</span><span id="pct_t1">0%</span></div>
+            <div class="budget-item"><span>Pure Term Life Premium</span><span class="budget-val" id="ab_term">₹0</span></div>
+            <div class="budget-item"><span>Family Health Premium</span><span class="budget-val" id="ab_health">₹0</span></div>
+            <div class="budget-item"><span>Parents Medical Reserve</span><span class="budget-val" id="ab_parents">₹0</span></div>
+            <div class="budget-total"><span>Tier 1 Target:</span><span class="t1" id="tot_t1">₹0</span></div>
+          </div>
+          <div class="budget-tier">
+            <div class="tier-header t2"><span>Tier 2: Debt Freedom & Emergency</span><span id="pct_t2">0%</span></div>
+            <div class="budget-item"><span>Estimated Required Loan EMIs</span><span class="budget-val" id="ab_emi">₹0</span></div>
+            <div class="budget-item"><span>Emergency Fund SIP (5%)</span><span class="budget-val" id="ab_emerg">₹0</span></div>
+            <div class="budget-total"><span>Tier 2 Target:</span><span class="t2" id="tot_t2">₹0</span></div>
+          </div>
+          <div class="budget-tier">
+            <div class="tier-header t3"><span>Tier 3: Core Family Living Needs</span><span id="pct_t3">0%</span></div>
+            <div class="budget-item"><span>Max Allowed for Rent & Living</span><span class="budget-val" id="ab_living">₹0</span></div>
+            <div class="budget-item"><span>Your Current Burn Rate</span><span class="budget-val" id="ab_actual_living" style="color:var(--accent-yellow);">₹0</span></div>
+            <div class="budget-total"><span>Tier 3 Target:</span><span class="t3" id="tot_t3">₹0</span></div>
+          </div>
+          <div class="budget-tier">
+            <div class="tier-header t4"><span>Tier 4: Future Wealth & Goals</span><span id="pct_t4">0%</span></div>
+            <div class="budget-item"><span>Child Education SIP (Exact Need)</span><span class="budget-val" id="ab_sip">₹0</span></div>
+            <div class="budget-item"><span>Retirement SIP (10%)</span><span class="budget-val" id="ab_ret">₹0</span></div>
+            <div class="budget-total"><span>Tier 4 Target:</span><span class="t4" id="tot_t4">₹0</span></div>
+          </div>
+          <div class="budget-tier">
+            <div class="tier-header t5"><span>Tier 5: Lifestyle & Discretionary</span><span id="pct_t5">Max 5%</span></div>
+            <div class="budget-item"><span>Max Allowed Discretionary</span><span class="budget-val" id="ab_leak">₹0</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <div class="card-header"><h2>ALLOCATION METER</h2><span class="card-badge">Target Profile</span></div>
+            <div class="progress-bar-stack">
+              <div id="bar_t1" class="bar-t1"></div>
+              <div id="bar_t2" class="bar-t2"></div>
+              <div id="bar_t3" class="bar-t3"></div>
+              <div id="bar_t4" class="bar-t4"></div>
+              <div id="bar_t5" class="bar-t5"></div>
+            </div>
+            <div style="font-size:0.78rem; display:flex; flex-direction:column; gap:7px; color:var(--text-main); margin-top:10px; font-weight:600;">
+              <div style="display:flex; justify-content:space-between;"><span>🟢 T1 Armor</span><span id="lbl_t1">0%</span></div>
+              <div style="display:flex; justify-content:space-between;"><span>🔴 T2 Debt / Emerg</span><span id="lbl_t2">0%</span></div>
+              <div style="display:flex; justify-content:space-between;"><span>🔵 T3 Living</span><span id="lbl_t3">0%</span></div>
+              <div style="display:flex; justify-content:space-between;"><span>🟣 T4 Goals</span><span id="lbl_t4">0%</span></div>
+              <div style="display:flex; justify-content:space-between;"><span>🟡 T5 Leakage Max</span><span id="lbl_t5">0%</span></div>
+            </div>
+            <div class="summary-row">
+              <div class="summary-item">
+                <span class="summary-lbl">Total Allocated / Income</span>
+                <span class="summary-val" id="outflow_ratio">₹0 / ₹0</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-lbl">Monthly Surplus / Deficit</span>
+                <span class="summary-val" id="monthly_surplus">₹0</span>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h2>⚡ LEAKAGE OPPORTUNITY COST</h2></div>
+            <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px;">What your allowed discretionary leakage could become if invested at your expected equity return:</p>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+              <div class="stat-box">
+                <span class="stat-lbl">10-Year Corpus</span>
+                <span class="stat-val" id="comp_10yr" style="color:var(--accent-red); font-size:1.15rem;">₹0 Lakh</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-lbl">18-Year Corpus</span>
+                <span class="stat-val" id="comp_18yr" style="color:var(--accent-red); font-size:1.15rem;">₹0 Lakh</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: SUNK COST -->
+    <div id="tab_sunkcost" class="tab-pane">
+      <div class="card">
+        <div class="card-header">
+          <h2>🔄 TRADITIONAL POLICY SUNK-COST RECOVERY ENGINE</h2>
+          <span class="card-badge" style="background:rgba(16, 185, 129, 0.2); color:var(--accent-green);">Wealth Unlocked</span>
+        </div>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:16px; line-height:1.6;">
+          Families often pay heavy premiums for years on endowment policies yielding only 4.5%–5.5%. Convert to <b>Paid-Up</b> and redirect future premiums into Index SIP + ₹1 Cr Pure Term Plan.
+        </p>
+        <div class="table-responsive">
+          <table class="pro-table">
+            <thead>
+              <tr>
+                <th>Decision Parameter</th>
+                <th>Path A: Keep Paying</th>
+                <th>Path B: Paid-Up + Term + SIP</th>
+                <th>Advantage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Annual Cash Outgo</b></td>
+                <td id="sc_outgo_a">₹0</td>
+                <td id="sc_outgo_b">₹0</td>
+                <td>Same Budget</td>
+              </tr>
+              <tr>
+                <td><b>Life Insurance Cover</b></td>
+                <td id="sc_cov_a">₹0</td>
+                <td><b>₹1,00,00,000</b></td>
+                <td style="color:var(--accent-green);">Massive Protection</td>
+              </tr>
+              <tr>
+                <td><b>Remaining Years</b></td>
+                <td id="sc_rem">0 Yrs</td>
+                <td id="sc_rem_b">0 Yrs</td>
+                <td>Same Tenure</td>
+              </tr>
+              <tr>
+                <td><b>Policy Maturity Value</b></td>
+                <td id="sc_mat_a">₹0</td>
+                <td id="sc_mat_b">₹0</td>
+                <td>Proportional Value</td>
+              </tr>
+              <tr>
+                <td><b id="lbl_sc_equity">Index Fund Corpus</b></td>
+                <td>₹0</td>
+                <td id="sc_sip_corp" style="color:var(--accent-green); font-weight:700;">₹0</td>
+                <td style="color:var(--accent-green);">Inflation Beating</td>
+              </tr>
+              <tr style="background:rgba(16, 185, 129, 0.1);">
+                <td><b>TOTAL FAMILY WEALTH</b></td>
+                <td id="sc_tot_a" style="font-weight:700;">₹0</td>
+                <td id="sc_tot_b" style="font-weight:800; color:var(--accent-green); font-size:1.05rem;">₹0</td>
+                <td id="sc_diff" style="font-weight:800; color:var(--accent-green); font-size:1.05rem;">+₹0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:18px; padding:14px; border-radius:8px; background:rgba(59, 130, 246, 0.1); border-left:4px solid var(--accent-blue);">
+          <strong id="sc_advice_name" style="color:var(--accent-blue); font-size:0.95rem;">Strategic Advice:</strong>
+          <p id="sc_advice_txt" style="font-size:0.86rem; color:var(--text-main); margin-top:7px; line-height:1.5;">Enter policy details to see calculation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: HLV & RETIREMENT -->
+    <div id="tab_audit" class="tab-pane">
+      <div class="layout-2col">
+        <div class="card">
+          <div class="card-header"><h2>HUMAN LIFE VALUE (HLV) DEFICIT</h2></div>
+          <div class="stat-box">
+            <span class="stat-lbl">Required Scientific Life Cover</span>
+            <span class="stat-val" id="hlv_req" style="color:var(--accent-blue);">₹0</span>
+            <span style="font-size:0.72rem; color:var(--text-muted); margin-top:4px;">Based on living costs, debts, and children's education.</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-lbl">Current Cover in Hand</span>
+            <span class="stat-val" id="hlv_hand">₹0</span>
+          </div>
+          <div class="stat-box" style="border-color:var(--accent-red); background:rgba(239, 68, 68, 0.1);">
+            <span class="stat-lbl" style="color:var(--accent-red);">Family Survival Deficit</span>
+            <span class="stat-val" id="hlv_gap" style="color:var(--accent-red);">₹0 DEFICIT</span>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <div class="card-header"><h2>RETIREMENT PROJECTION (AGE 60)</h2></div>
+            <div class="stat-box">
+              <span class="stat-lbl">Projected Corpus from Tier 4 SIP</span>
+              <span class="stat-val" id="ret_corpus" style="color:var(--accent-purple);">₹0</span>
+              <span style="font-size:0.72rem; color:var(--text-muted); margin-top:4px;">Assuming contributions continue until age 60.</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h2>EMERGENCY & HEALTH RESERVE</h2></div>
+            <div class="stat-box">
+              <span class="stat-lbl">Liquid Reserve (Cash/FD)</span>
+              <span class="stat-val" id="liq_res">₹0</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-lbl">Emergency Buffer Runway</span>
+              <span class="stat-val" id="liq_run">0 Months</span>
+            </div>
+            <div id="hw_box" class="alert-banner" style="display:none;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: ACTION + RISKS (Unified with WhatsApp Stage 5) -->
+    <div id="tab_action" class="tab-pane">
+      <div class="card">
+        <div class="card-header"><h2 data-i18n="road_title">📋 YOUR FINANCIAL DEFENCE ROADMAP + RISK REPORT</h2></div>
+
+        <!-- EDUCATION INFLATION SHOCK -->
+        <div class="edu-shock" id="edu_shock_section">
+          <h3 style="color:var(--accent-red); margin-bottom:12px; font-size:1.05rem;" data-i18n="edu_shock_title">🎓 Education Inflation Shock (<span id="edu_inf_lbl">10</span>% p.a.)</h3>
+          <div id="edu_children_detail"></div>
+          <div style="margin-top:12px; font-weight:700; color:var(--accent-yellow); font-size:0.95rem;" id="edu_combined_sip"></div>
+        </div>
+
+        <!-- 10 RISKS -->
+        <div class="risk-card">
+          <h3 style="margin-bottom:14px; color:var(--text-main); font-size:1rem;" data-i18n="risk_title">⚠️ Why Inflation Creates a Serious Future Risk</h3>
+          <div class="risk-item"><div class="risk-dot risk-red"></div><div><b>1. Healthcare & hospitalization</b> — Medical costs rise faster than income. One emergency can push the family into toxic debt.</div></div>
+          <div class="risk-item"><div class="risk-dot risk-red"></div><div><b>2. Children's education</b> — School, college, professional courses and coaching become major long-term expenses.</div></div>
+          <div class="risk-item"><div class="risk-dot risk-red"></div><div><b>3. Retirement</b> — Today's ₹30,000 lifestyle may cost ₹1.5–2 Lakh per month after 20–25 years.</div></div>
+          <div class="risk-item"><div class="risk-dot risk-red"></div><div><b>4. Loss of earning member</b> — An inadequate life-insurance cover becomes more inadequate every year because of inflation.</div></div>
+          <div class="risk-item"><div class="risk-dot risk-red"></div><div><b>5. Housing / rent / home loan</b> — Rent, maintenance, construction and repair costs keep rising.</div></div>
+          <div class="risk-item"><div class="risk-dot risk-orange"></div><div><b>6. Food & household essentials</b> — Repeated price increases directly reduce monthly disposable income.</div></div>
+          <div class="risk-item"><div class="risk-dot risk-orange"></div><div><b>7. Emergency fund</b> — A ₹2–3 Lakh reserve today will not give the same protection after 8–10 years.</div></div>
+          <div class="risk-item"><div class="risk-dot risk-orange"></div><div><b>8. Family responsibilities</b> — Marriage, parents' support and other obligations become considerably more expensive.</div></div>
+          <div class="risk-item"><div class="risk-dot risk-orange"></div><div><b>9. Transportation</b> — Fuel, vehicle, maintenance and insurance costs keep climbing.</div></div>
+          <div class="risk-item"><div class="risk-dot risk-yellow"></div><div><b>10. Lifestyle & technology</b> — Phones, appliances, internet and entertainment expenses gradually increase.</div></div>
+        </div>
+
+        <!-- ROADMAP ACTIONS -->
+        <div id="roadmap_content" style="margin-top:18px;"></div>
+
+        <!-- STRONG CTAs (compatible with WhatsApp) -->
+        <div class="cta-box">
+          <a id="cta_advisor" href="#" target="_blank" class="btn btn-wa" style="background:linear-gradient(135deg,#25D366,#128C7E);">💬 <span data-i18n="cta_advisor">Speak to Advisor on WhatsApp</span></a>
+          <a id="cta_sip" href="#" target="_blank" class="btn btn-calc">📈 <span data-i18n="cta_sip">Get Exact SIP Plan</span></a>
+          <a id="cta_team" href="#" target="_blank" class="btn" style="background:var(--accent-purple);">🌟 <span data-i18n="cta_team">Join Our Team</span></a>
+        </div>
+        <p style="font-size:0.78rem; color:var(--text-muted); margin-top:12px; text-align:center;">
+          <span data-i18n="cta_note">Same data is shared with the WhatsApp bot. Your advisor already has this report when you message.</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Floating WhatsApp -->
+  <a id="floating_wa" href="#" target="_blank" class="floating-cta" title="Chat on WhatsApp">💬</a>
+
+  <div id="toast-notification" class="toast">✅ Audit Synced Successfully!</div>
+
+  <script>
+    // ============================================================
+    // UNIFIED CONFIG — Same webhook & schema as WhatsApp Bot
+    // ============================================================
+    const WEBHOOK_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+    // Google Sheet columns (Leads tab) must match exactly:
+    // Timestamp, WA_Phone, Name, Age, Language, City_PIN, Parents, Children_Count, Children_Ages,
+    // Salary, Business, Other_Income, Total_Income, Liquid_Cash, Investments, Home_Loan, Toxic_Debt,
+    // Living_Spend, Policy_Premium, Policy_Paid_Yrs, Policy_Term, Policy_SA, Policy_Maturity,
+    // HLV_Gap, Sunk_Gain, Status, Last_Interaction, Source
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notification');
+      if (msg) toast.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      const tgt = document.getElementById(tabId);
+      if (tgt) tgt.classList.add('active');
+      if (btn && btn.classList) btn.classList.add('active');
+    }
+
+    function toggleSettings() {
+      document.getElementById('settings_modal').classList.toggle('open');
+    }
+
+    function fmt(n) {
+      if (isNaN(n) || n === null || n === undefined) return "₹0";
+      return '₹' + Math.round(n).toLocaleString('en-IN');
+    }
+
+    function fmtCr(n) {
+      if (isNaN(n) || n === null) return "₹0";
+      if (Math.abs(n) >= 10000000) return `₹${(n / 10000000).toFixed(2)} Cr`;
+      if (Math.abs(n) >= 100000) return `₹${(n / 100000).toFixed(2)} Lakh`;
+      return fmt(n);
+    }
+
+    let childAgesData = [6, 3, 1, 1, 1];
+
+    function updateChildrenFields() {
+      const container = document.getElementById('children_ages_container');
+      const num = Math.min(Math.max(0, parseInt(document.getElementById('u_dep_children').value) || 0), 5);
+      const currentInputs = container.querySelectorAll('.child-age-input');
+      if (currentInputs.length === num) {
+        runAllCalculations();
+        return;
+      }
+      currentInputs.forEach((input, index) => {
+        if (input.value !== '') childAgesData[index] = input.value;
+      });
+      let html = '';
+      for (let i = 1; i <= num; i++) {
+        const val = childAgesData[i - 1] !== undefined ? childAgesData[i - 1] : 5;
+        html += `
+        <div class="field-group">
+          <label style="color:var(--accent-green);">Child ${i} Age (Yrs)</label>
+          <input type="number" inputmode="numeric" class="child-age-input highlight-asset" id="child_age_${i}" value="${val}" min="0" max="25" oninput="runAllCalculations()">
+        </div>`;
+      }
+      container.innerHTML = html;
+      runAllCalculations();
+    }
+
+    function loadSample() {
+      document.getElementById('u_name').value = "Rahul Sharma";
+      document.getElementById('u_mobile').value = "9876543210";
+      document.getElementById('u_email').value = "rahul@example.com";
+      document.getElementById('u_age').value = 35;
+      document.getElementById('u_dep_parents').value = 2;
+      document.getElementById('u_dep_children').value = 2;
+      document.getElementById('inc_salary').value = 65000;
+      document.getElementById('inc_business').value = 0;
+      document.getElementById('inc_other').value = 5000;
+      document.getElementById('ast_cash').value = 150000;
+      document.getElementById('ast_invest').value = 80000;
+      document.getElementById('exp_living').value = 35000;
+      document.getElementById('lia_home').value = 1200000;
+      document.getElementById('lia_toxic').value = 250000;
+      document.getElementById('pol_premium').value = 45000;
+      document.getElementById('pol_paid').value = 6;
+      document.getElementById('pol_term').value = 20;
+      document.getElementById('pol_sa').value = 800000;
+      document.getElementById('pol_mat').value = 1400000;
+      childAgesData = [5, 4];
+      updateChildrenFields();
+      showToast("✅ Demo Profile Loaded!");
+    }
+
+    function updateWhatsAppLinks() {
+      const businessWA = (document.getElementById('cfg_wa_number').value || "919999999999").replace(/\D/g, '');
+      const clientMobile = (document.getElementById('u_mobile').value || "").replace(/\D/g, '');
+      const name = document.getElementById('u_name').value || "Client";
+      const base = `https://wa.me/${businessWA}?text=`;
+
+      const msgAdvisor = encodeURIComponent(
+        `Hi, I completed my Parivar Rakshak audit on the website.\n\nName: ${name}\nMobile: ${clientMobile}\n\nI want a personalised action roadmap and consultation.`
+      );
+      const msgSIP = encodeURIComponent(
+        `Hi, I need the exact Education SIP plan for my children based on my Parivar Rakshak report.\n\nName: ${name}\nMobile: ${clientMobile}`
+      );
+      const msgTeam = encodeURIComponent(
+        `Hi, I want to join the Parivar Rakshak team and help other families.\n\nName: ${name}\nMobile: ${clientMobile}`
+      );
+      const msgGeneric = encodeURIComponent(`Hi, I need help with my family financial defence plan.`);
+
+      document.getElementById('cta_advisor').href = base + msgAdvisor;
+      document.getElementById('cta_sip').href = base + msgSIP;
+      document.getElementById('cta_team').href = base + msgTeam;
+      document.getElementById('nav_wa_btn').href = base + msgGeneric;
+      document.getElementById('floating_wa').href = base + msgGeneric;
+    }
+
+    function runAllCalculations(isAction = false) {
+      const eqRate = (parseFloat(document.getElementById('cfg_equity').value) || 12) / 100;
+      const eduInf = (parseFloat(document.getElementById('cfg_edu_inf').value) || 10) / 100;
+      const baseDegCost = parseFloat(document.getElementById('cfg_deg_cost').value) || 1500000;
+      const termCostYr = parseFloat(document.getElementById('cfg_term_cost').value) || 12000;
+
+      document.getElementById('edu_inf_lbl').innerText = (eduInf * 100).toFixed(0);
+
+      const name = document.getElementById('u_name').value.trim() || "Client";
+      const mobile = document.getElementById('u_mobile').value.trim() || "";
+      const email = document.getElementById('u_email') ? document.getElementById('u_email').value.trim() : "";
+      const age = Math.max(18, Math.min(75, parseFloat(document.getElementById('u_age').value) || 30));
+      const depParents = Math.max(0, parseFloat(document.getElementById('u_dep_parents').value) || 0);
+      const depChildren = Math.max(0, Math.min(5, parseFloat(document.getElementById('u_dep_children').value) || 0));
+
+      const salary = parseFloat(document.getElementById('inc_salary').value) || 0;
+      const business = parseFloat(document.getElementById('inc_business').value) || 0;
+      const otherInc = parseFloat(document.getElementById('inc_other').value) || 0;
+      const totalInc = salary + business + otherInc;
+
+      const astCash = parseFloat(document.getElementById('ast_cash').value) || 0;
+      const astInvest = parseFloat(document.getElementById('ast_invest').value) || 0;
+      const totalAst = astCash + astInvest;
+
+      const liaHome = parseFloat(document.getElementById('lia_home').value) || 0;
+      const liaToxic = parseFloat(document.getElementById('lia_toxic').value) || 0;
+      const totalDebt = liaHome + liaToxic;
+      const nw = totalAst - totalDebt;
+      const actLiving = parseFloat(document.getElementById('exp_living').value) || 0;
+
+      document.getElementById('rb_inc').innerText = fmt(totalInc);
+      document.getElementById('rb_ast').innerText = fmt(totalAst);
+      document.getElementById('rb_debt').innerText = fmt(totalDebt);
+      document.getElementById('rb_nw').innerText = fmt(nw);
+      document.getElementById('rb_nw').style.color = nw >= 0 ? "var(--accent-green)" : "var(--accent-red)";
+
+      // Child Education SIP + Shock Report
+      let totReqSIP = 0, totFutCost = 0, collectedAges = [], eduHtml = "";
+      for (let i = 1; i <= depChildren; i++) {
+        const cEl = document.getElementById('child_age_' + i);
+        const cAge = cEl ? Math.max(0, parseFloat(cEl.value) || 0) : 0;
+        collectedAges.push(cAge);
+        const yLeft = Math.max(1, 18 - cAge);
+        const fCost = baseDegCost * Math.pow(1 + eduInf, yLeft);
+        const rM = Math.pow(1 + eqRate, 1 / 12) - 1;
+        const reqSIP = (fCost * rM) / ((Math.pow(1 + rM, yLeft * 12) - 1) * (1 + rM));
+        totReqSIP += reqSIP;
+        totFutCost += fCost;
+
+        eduHtml += `
+          <div class="edu-child">
+            <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+              <div>
+                <b>Child ${i}</b> (Needs funds in <b>${yLeft} years</b>)
+              </div>
+              <div style="text-align:right;">
+                Today ≈ ${fmt(baseDegCost)} ➔ <span style="color:var(--accent-red); font-weight:800;">${fmt(fCost)}</span>
+              </div>
+            </div>
+            <div style="margin-top:6px; color:var(--accent-yellow); font-weight:700;">
+              SIP Needed: ${fmt(reqSIP)} / month
+            </div>
+          </div>`;
+      }
+      document.getElementById('edu_children_detail').innerHTML = eduHtml || "<p style='color:var(--text-muted);'>No children added. Education risk is currently zero.</p>";
+      document.getElementById('edu_combined_sip').innerHTML = depChildren > 0
+        ? `*Combined Education SIP Required: <span style="color:var(--accent-red);">${fmt(totReqSIP)} / month</span>*`
+        : "";
+
+      // Budget Tiers
+      const emiHome = liaHome * 0.00984;
+      const emiToxic = liaToxic * 0.03615;
+      const totalEmi = emiHome + emiToxic;
+      const termPrem = Math.max(700, 700 + (age - 25) * 55);
+      const healthPrem = 900 + (depChildren * 350) + (depParents * 1100);
+      const parentsFund = depParents * 1500;
+      const t1 = termPrem + healthPrem + parentsFund;
+      const emergFund = totalInc * 0.05;
+      const t2 = totalEmi + emergFund;
+      const retFund = totalInc * 0.10;
+      const t4 = totReqSIP + retFund;
+      const remaining = totalInc - (t1 + t2 + t4);
+      let t3 = 0, t5 = 0;
+      if (remaining > 0) {
+        const maxLeakage = totalInc * 0.05;
+        if (remaining > maxLeakage) { t5 = maxLeakage; t3 = remaining - maxLeakage; }
+        else { t5 = remaining * 0.25; t3 = remaining * 0.75; }
+      }
+      const minRequiredIncome = t1 + t2 + t4 + actLiving;
+      const budgetSurplus = totalInc - minRequiredIncome;
+
+      document.getElementById('ab_term').innerText = fmt(termPrem);
+      document.getElementById('ab_health').innerText = fmt(healthPrem);
+      document.getElementById('ab_parents').innerText = fmt(parentsFund);
+      document.getElementById('tot_t1').innerText = fmt(t1);
+      document.getElementById('ab_emi').innerText = fmt(totalEmi);
+      document.getElementById('ab_emerg').innerText = fmt(emergFund);
+      document.getElementById('tot_t2').innerText = fmt(t2);
+      document.getElementById('ab_living').innerText = fmt(t3);
+      document.getElementById('ab_actual_living').innerText = fmt(actLiving);
+      document.getElementById('tot_t3').innerText = fmt(t3);
+      document.getElementById('ab_sip').innerText = fmt(totReqSIP);
+      document.getElementById('ab_ret').innerText = fmt(retFund);
+      document.getElementById('tot_t4').innerText = fmt(t4);
+      document.getElementById('ab_leak').innerText = fmt(t5);
+
+      const realTotal = t1 + t2 + actLiving + t4 + t5;
+      const safeDiv = realTotal > 0 ? realTotal : 1;
+      const pctT1 = Math.min((t1 / safeDiv) * 100, 100) || 0;
+      const pctT2 = Math.min((t2 / safeDiv) * 100, 100) || 0;
+      const pctT3 = Math.min((actLiving / safeDiv) * 100, 100) || 0;
+      const pctT4 = Math.min((t4 / safeDiv) * 100, 100) || 0;
+      const pctT5 = Math.min((t5 / safeDiv) * 100, 100) || 0;
+
+      document.getElementById('bar_t1').style.width = pctT1 + '%';
+      document.getElementById('bar_t2').style.width = pctT2 + '%';
+      document.getElementById('bar_t3').style.width = pctT3 + '%';
+      document.getElementById('bar_t4').style.width = pctT4 + '%';
+      document.getElementById('bar_t5').style.width = pctT5 + '%';
+      document.getElementById('pct_t1').innerText = pctT1.toFixed(1) + '%';
+      document.getElementById('pct_t2').innerText = pctT2.toFixed(1) + '%';
+      document.getElementById('pct_t3').innerText = pctT3.toFixed(1) + '%';
+      document.getElementById('pct_t4').innerText = pctT4.toFixed(1) + '%';
+      document.getElementById('pct_t5').innerText = pctT5.toFixed(1) + '%';
+      document.getElementById('lbl_t1').innerText = pctT1.toFixed(1) + '%';
+      document.getElementById('lbl_t2').innerText = pctT2.toFixed(1) + '%';
+      document.getElementById('lbl_t3').innerText = pctT3.toFixed(1) + '%';
+      document.getElementById('lbl_t4').innerText = pctT4.toFixed(1) + '%';
+      document.getElementById('lbl_t5').innerText = pctT5.toFixed(1) + '%';
+
+      document.getElementById('outflow_ratio').innerText = `${fmt(realTotal)} / ${fmt(totalInc)}`;
+      const surpEl = document.getElementById('monthly_surplus');
+      surpEl.innerText = budgetSurplus >= 0 ? `+${fmt(budgetSurplus)}/mo` : `-${fmt(Math.abs(budgetSurplus))}/mo DEFICIT`;
+      surpEl.style.color = budgetSurplus >= 0 ? "var(--accent-green)" : "var(--accent-red)";
+
+      const bAlert = document.getElementById('budget_alert');
+      if (totalInc === 0) {
+        bAlert.innerHTML = `<div class="alert-banner alert-warning">ℹ️ <b>NO DATA:</b> Enter Income, Dependents and Debts in Master Profile.</div>`;
+      } else if (budgetSurplus < 0) {
+        bAlert.innerHTML = `<div class="alert-banner alert-danger">🚨 <b>INCOME DEFICIT:</b> Living expenses & required allocations exceed income by ${fmt(Math.abs(budgetSurplus))}/mo!</div>`;
+      } else {
+        bAlert.innerHTML = `<div class="alert-banner alert-success">✅ <b>STABLE:</b> Income supports scientific financial requirements.</div>`;
+      }
+
+      const rM_eq = Math.pow(1 + eqRate, 1 / 12) - 1;
+      const fv10 = t5 > 0 ? t5 * ((Math.pow(1 + rM_eq, 120) - 1) / rM_eq) : 0;
+      const fv18 = t5 > 0 ? t5 * ((Math.pow(1 + rM_eq, 216) - 1) / rM_eq) : 0;
+      document.getElementById('comp_10yr').innerText = `₹${(fv10 / 100000).toFixed(2)} Lakh`;
+      document.getElementById('comp_18yr').innerText = `₹${(fv18 / 100000).toFixed(2)} Lakh`;
+
+      // Sunk Cost
+      const polPrem = parseFloat(document.getElementById('pol_premium').value) || 0;
+      const polPaid = Math.max(1, parseFloat(document.getElementById('pol_paid').value) || 1);
+      const polTerm = Math.max(polPaid + 1, parseFloat(document.getElementById('pol_term').value) || 20);
+      const polSA = parseFloat(document.getElementById('pol_sa').value) || 0;
+      const polMatInput = parseFloat(document.getElementById('pol_mat').value);
+      const polMat = !isNaN(polMatInput) && polMatInput > 0 ? polMatInput : (polPrem * polTerm * 1.30);
+      const remYrs = Math.max(1, polTerm - polPaid);
+      const sipAnn = Math.max(0, polPrem - termCostYr);
+      const paidUp = polSA * (polPaid / polTerm) * 1.25;
+      const fvSip = sipAnn > 0 ? sipAnn * ((Math.pow(1 + eqRate, remYrs) - 1) / eqRate) * (1 + eqRate) : 0;
+      const totPathB = paidUp + fvSip;
+      const adv = totPathB - polMat;
+
+      document.getElementById('lbl_sc_equity').innerText = `Index Fund Corpus @ ${(eqRate * 100).toFixed(1)}%`;
+      document.getElementById('sc_outgo_a').innerText = fmt(polPrem) + "/yr";
+      document.getElementById('sc_outgo_b').innerText = fmt(polPrem) + "/yr";
+      document.getElementById('sc_cov_a').innerText = fmt(polSA);
+      document.getElementById('sc_rem').innerText = remYrs + " Yrs";
+      document.getElementById('sc_rem_b').innerText = remYrs + " Yrs";
+      document.getElementById('sc_mat_a').innerText = fmt(polMat);
+      document.getElementById('sc_mat_b').innerText = fmt(paidUp);
+      document.getElementById('sc_sip_corp').innerText = fmt(fvSip);
+      document.getElementById('sc_tot_a').innerText = fmt(polMat);
+      document.getElementById('sc_tot_b').innerText = fmt(totPathB);
+      document.getElementById('sc_diff').innerText = adv >= 0 ? `+${fmt(adv)}` : fmt(adv);
+      document.getElementById('sc_diff').style.color = adv >= 0 ? "var(--accent-green)" : "var(--accent-red)";
+
+      if (polPrem > 0) {
+        document.getElementById('sc_advice_name').innerText = `Action Advice for ${name}:`;
+        document.getElementById('sc_advice_txt').innerHTML = adv > 0
+          ? `Do not surrender with penalties. Convert to <b>Paid-Up</b>. Use the freed-up <b>${fmt(polPrem)}/yr</b> for a ₹1 Cr Pure Term (~₹${fmt(termCostYr)}/yr) + Index SIP to generate approximately <b>${fmt(Math.max(0, adv))} extra wealth</b>.`
+          : `Policy is near maturity or yielding adequately. Continue, but secure additional pure term cover of at least ₹1 Cr immediately.`;
+      } else {
+        document.getElementById('sc_advice_name').innerText = "Strategic Advice:";
+        document.getElementById('sc_advice_txt').innerText = "Enter policy details to see calculation.";
+      }
+
+      // HLV
+      const yRetire = Math.max(5, 60 - age);
+      const actualLivingCalc = actLiving > 0 ? actLiving : (t3 > 0 ? t3 : totalInc * 0.45);
+      const hlvNeed = (actualLivingCalc * 12 * yRetire) + totFutCost + totalDebt;
+      const existingTermCover = termPrem >= 600 ? 10000000 : 0;
+      const hlvHand = polSA + existingTermCover;
+      const gap = Math.max(0, hlvNeed - hlvHand);
+
+      document.getElementById('hlv_req').innerText = fmtCr(hlvNeed);
+      document.getElementById('hlv_hand').innerText = fmt(hlvHand);
+      document.getElementById('hlv_gap').innerText = gap > 0 ? `${fmtCr(gap)} DEFICIT` : "PROTECTED ✅";
+      document.getElementById('hlv_gap').style.color = gap > 0 ? "var(--accent-red)" : "var(--accent-green)";
+
+      const retCorpus = retFund > 0 ? retFund * ((Math.pow(1 + rM_eq, yRetire * 12) - 1) / rM_eq) : 0;
+      document.getElementById('ret_corpus').innerText = fmtCr(retCorpus);
+
+      const rMo = actualLivingCalc > 0 ? (astCash / actualLivingCalc).toFixed(1) : "0";
+      document.getElementById('liq_res').innerText = fmt(astCash);
+      document.getElementById('liq_run').innerText = rMo + " Months";
+
+      const hwb = document.getElementById('hw_box');
+      if (depParents > 0 && astCash < actualLivingCalc * 3) {
+        hwb.style.display = "flex";
+        hwb.className = "alert-banner alert-danger";
+        hwb.innerHTML = "⚠️ <b>CRITICAL:</b> Dependent parents + severe lack of liquid reserve. Medical emergency will trigger toxic debt.";
+      } else if (astCash > 0 && parseFloat(rMo) >= 3) {
+        hwb.style.display = "flex";
+        hwb.className = "alert-banner alert-success";
+        hwb.innerHTML = "✅ Liquid buffers are stable.";
+      } else if (astCash > 0) {
+        hwb.style.display = "flex";
+        hwb.className = "alert-banner alert-warning";
+        hwb.innerHTML = "⚠️ Liquid reserve below 3-month runway. Build emergency fund urgently.";
+      } else {
+        hwb.style.display = "none";
+      }
+
+      // Roadmap
+      const debtPrepayMsg = liaToxic > 0
+        ? `Prepay high-interest loans (${fmt(liaToxic)}) immediately. Guaranteed tax-free return equal to the interest you stop paying.`
+        : (totalDebt > 0 ? `Total debt is ${fmt(totalDebt)}. Maintain regular EMIs and avoid new high-interest borrowing.` : `Debt Free! Excellent financial health.`);
+
+      const debtPrepayStatus = liaToxic > 0
+        ? `<span style="color:var(--accent-red); font-weight:bold;">URGENT: PREPAY</span>`
+        : `<span style="color:var(--accent-green); font-weight:bold;">CONTROLLED</span>`;
+
+      document.getElementById('roadmap_content').innerHTML = `
+        <div class="item-row" style="background:rgba(0,0,0,0.2); padding:14px; border-radius:8px; border-left:4px solid var(--accent-green);">
+          <div style="display:flex; flex-direction:column; gap:3px;">
+            <strong style="color:var(--text-main); font-size:0.95rem;">1. Life Defense for ${name}</strong>
+            <span style="font-size:0.82rem; color:var(--text-muted);">Buy ₹1–1.5 Cr Pure Term. Protects ${fmt(totalDebt)} debt & ${depChildren} child(ren).</span>
+          </div>
+          <div style="font-weight:800; color:${gap > 0 ? 'var(--accent-red)' : 'var(--accent-green)'}; white-space:nowrap;">${gap > 0 ? 'BUY TERM PLAN' : 'PROTECTED'}</div>
+        </div>
+        <div class="item-row" style="background:rgba(0,0,0,0.2); padding:14px; border-radius:8px; border-left:4px solid var(--accent-blue);">
+          <div style="display:flex; flex-direction:column; gap:3px;">
+            <strong style="color:var(--text-main); font-size:0.95rem;">2. Health Armor</strong>
+            <span style="font-size:0.82rem; color:var(--text-muted);">₹10 Lakh health floater + medical reserve for ${depParents} senior parent(s).</span>
+          </div>
+          <div style="font-weight:800; color:${(depParents > 0 && parseFloat(rMo) < 3) ? 'var(--accent-red)' : 'var(--accent-blue)'}; white-space:nowrap;">${(depParents > 0 && parseFloat(rMo) < 3) ? 'FUND RESERVE' : 'ACTIVE'}</div>
+        </div>
+        <div class="item-row" style="background:rgba(0,0,0,0.2); padding:14px; border-radius:8px; border-left:4px solid var(--accent-red);">
+          <div style="display:flex; flex-direction:column; gap:3px;">
+            <strong style="color:var(--text-main); font-size:0.95rem;">3. Debt Liquidation</strong>
+            <span style="font-size:0.82rem; color:var(--text-muted);">${debtPrepayMsg}</span>
+          </div>
+          <div>${debtPrepayStatus}</div>
+        </div>
+        <div class="item-row" style="background:rgba(0,0,0,0.2); padding:14px; border-radius:8px; border-left:4px solid var(--accent-yellow);">
+          <div style="display:flex; flex-direction:column; gap:3px;">
+            <strong style="color:var(--text-main); font-size:0.95rem;">4. Sunk-Cost Action</strong>
+            <span style="font-size:0.82rem; color:var(--text-muted);">${adv > 0 ? `Convert endowment to Paid-Up. Potential extra wealth: ${fmt(adv)}.` : 'Policy status verified.'}</span>
+          </div>
+          <div style="font-weight:800; color:var(--accent-yellow); white-space:nowrap;">${adv > 0 ? 'WEALTH UNLOCKED' : 'VERIFIED'}</div>
+        </div>
+        <div class="item-row" style="background:rgba(0,0,0,0.2); padding:14px; border-radius:8px; border-left:4px solid var(--accent-purple);">
+          <div style="display:flex; flex-direction:column; gap:3px;">
+            <strong style="color:var(--text-main); font-size:0.95rem;">5. Child Education SIP</strong>
+            <span style="font-size:0.82rem; color:var(--text-muted);">Due to ${(eduInf * 100).toFixed(0)}% inflation, combined SIP of <b>${fmt(totReqSIP)}/mo</b> is required.</span>
+          </div>
+          <div style="font-weight:800; color:var(--accent-purple); white-space:nowrap;">START SIP</div>
+        </div>
+      `;
+
+      // Unified payload for Google Sheet (same as WhatsApp bot)
+      if (isAction) {
+        if (WEBHOOK_URL && !WEBHOOK_URL.includes("YOUR_GOOGLE")) {
+          const payload = {
+            timestamp: new Date().toISOString(),
+            WA_Phone: mobile ? "91" + mobile.replace(/\D/g, '').slice(-10) : "",
+            name, age, Language: "en",
+            City_PIN: "",
+            Parents: depParents,
+            Children_Count: depChildren,
+            Children_Ages: collectedAges.join(', '),
+            Salary: salary, Business: business, Other_Income: otherInc,
+            Total_Income: totalInc,
+            Liquid_Cash: astCash, Investments: astInvest,
+            Home_Loan: liaHome, Toxic_Debt: liaToxic,
+            Living_Spend: actLiving,
+            Policy_Premium: polPrem, Policy_Paid_Yrs: polPaid,
+            Policy_Term: polTerm, Policy_SA: polSA, Policy_Maturity: polMat,
+            HLV_Gap: gap, Sunk_Gain: adv,
+            Status: "Completed",
+            Last_Interaction: new Date().toISOString(),
+            Source: "Web_App"
+          };
+          fetch(WEBHOOK_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          }).catch(e => console.warn("Webhook:", e));
+        }
+        showToast("✅ Audit Synced to Google Sheet (same as WhatsApp bot)!");
+      }
+
+      window.csvDataExport = {
+        name, age, mobile, email, totalInc, totalAst, totalDebt, nw,
+        budgetSurplus, gap, adv, retCorpus, totReqSIP, liquidReserve: astCash
+      };
+
+      updateWhatsAppLinks();
+    }
+
+    function exportCSV() {
+      if (!window.csvDataExport) { showToast("⚠️ Calculate first!"); return; }
+      const d = window.csvDataExport;
+      let csv = "Metric,Value\n";
+      csv += `Client Name,${d.name}\nAge,${d.age}\nMobile,${d.mobile || ''}\nEmail,${d.email || ''}\n`;
+      csv += `Total Monthly Income,${d.totalInc}\nTotal Assets,${d.totalAst}\nTotal Debt,${d.totalDebt}\nNet Worth,${d.nw}\n`;
+      csv += `Monthly Cash Surplus,${d.budgetSurplus}\nLife Insurance Deficit (HLV Gap),${d.gap}\n`;
+      csv += `Sunk-Cost Extra Wealth Potential,${d.adv}\nChild Education SIP Required,${d.totReqSIP}\n`;
+      csv += `Projected Retirement Corpus (Age 60),${d.retCorpus}\nLiquid Reserve,${d.liquidReserve}\n`;
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `Parivar_Rakshak_Audit_${(d.name || 'Client').replace(/\s+/g, '_')}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      showToast("📥 CSV Exported!");
+    }
+
+    function saveData() { runAllCalculations(true); }
+
+
+    // ============================================================
+    // FULL MULTI-LANGUAGE SYSTEM (Easy everyday words)
+    // ============================================================
+    const i18n = {
+      en: {
+        app_title: "Parivar Rakshak",
+        app_subtitle: "Web + WhatsApp Unified Edition",
+        btn_settings: "Settings", btn_demo: "Demo", btn_calc: "Calc", btn_save: "Save", btn_csv: "CSV", btn_print: "PDF", btn_wa: "WhatsApp",
+        settings_title: "Advanced Settings",
+        cfg_equity: "Expected stock market return (CAGR %)",
+        cfg_edu_inf: "Education cost rise per year (%)",
+        cfg_deg_cost: "Today's college degree cost (₹)",
+        cfg_term_cost: "Yearly cost of ₹1 Cr pure term plan (₹)",
+        cfg_wa_number: "Your WhatsApp number (with country code)",
+        btn_apply: "Apply & Close",
+        banner_title: "Expert Portfolio & Tax Advice",
+        banner_text: "Same data as WhatsApp bot. Save here and your advisor already has the full report when you message on WhatsApp.",
+        banner_btn: "🌐 Talk to Buddhadeb Associates",
+        profile_title: "👤 Your Family Details",
+        profile_badge: "Shared with WhatsApp Bot",
+        sec_id: "1. Who are you?",
+        sec_income: "2. Monthly Income (₹)",
+        sec_wealth: "3. Savings & Loans (₹)",
+        sec_policy: "4. Old Life Insurance Policy (if any)",
+        lbl_name: "Your full name",
+        lbl_mobile: "Mobile number (10 digits)",
+        lbl_email: "Email (optional)",
+        lbl_age: "Your age (years)",
+        lbl_parents: "How many elderly parents?",
+        lbl_children: "How many children?",
+        lbl_salary: "Take-home salary",
+        lbl_business: "Business / shop profit",
+        lbl_other: "Other income (rent / freelance / farm)",
+        lbl_cash: "Cash + Fixed Deposit savings",
+        lbl_invest: "Investments (PPF / shares / gold)",
+        lbl_home: "Home loan balance left",
+        lbl_toxic: "High-interest loan (gold / personal / credit card)",
+        lbl_living: "Monthly household expenses",
+        lbl_premium: "Yearly premium you pay (₹)",
+        lbl_paid: "Years you already paid",
+        lbl_term: "Total policy years",
+        lbl_sa: "Sum Assured (cover amount)",
+        lbl_mat: "Expected maturity amount (optional)",
+        rb_inc: "Monthly Income",
+        rb_ast: "Total Savings",
+        rb_debt: "Total Loans",
+        rb_nw: "Net Worth",
+        tab1: "📊 1. Smart Budget",
+        tab2: "🔄 2. Old Policy Check",
+        tab3: "🛡️ 3. Family Protection",
+        tab4: "📋 4. Action + Risks",
+        road_title: "📋 Your Action Plan + Future Risks",
+        edu_shock_title: "🎓 Education Cost Shock (<span id=\"edu_inf_lbl\">10</span>% p.a.)",
+        risk_title: "⚠️ Why Rising Prices Are Dangerous for Your Family",
+        risk_1: "<b>1. Hospital bills</b> — Medical costs rise faster than salary. One illness can force high-interest loans.",
+        risk_2: "<b>2. Children's education</b> — School, college and coaching fees keep rising every year.",
+        risk_3: "<b>3. Retirement</b> — Today's ₹30,000 lifestyle may need ₹1.5–2 lakh per month after 20–25 years.",
+        risk_4: "<b>4. Loss of earning member</b> — Small life insurance becomes weaker every year because of inflation.",
+        risk_5: "<b>5. House rent & home loan</b> — Rent and repair costs keep going up.",
+        risk_6: "<b>6. Food & daily needs</b> — Rising prices leave less money for savings every month.",
+        risk_7: "<b>7. Emergency fund</b> — ₹2–3 lakh savings today will buy much less after 8–10 years.",
+        risk_8: "<b>8. Family duties</b> — Marriage, parents' support and other needs become more expensive.",
+        risk_9: "<b>9. Travel & vehicle</b> — Fuel, maintenance and insurance keep increasing.",
+        risk_10: "<b>10. Lifestyle</b> — Phones, internet, TV and other small costs slowly go up.",
+        cta_advisor: "Speak to Advisor on WhatsApp",
+        cta_sip: "Get Exact SIP Plan",
+        cta_team: "Join Our Team",
+        cta_note: "Same data is shared with WhatsApp bot. Your advisor already has this report when you message."
+      },
+      hi: {
+        app_title: "परिवार रक्षक",
+        app_subtitle: "वेब + व्हाट्सऐप एकीकृत संस्करण",
+        btn_settings: "सेटिंग्स", btn_demo: "डेमो", btn_calc: "गणना", btn_save: "सेव", btn_csv: "CSV", btn_print: "PDF", btn_wa: "व्हाट्सऐप",
+        settings_title: "उन्नत सेटिंग्स",
+        cfg_equity: "शेयर बाजार से अपेक्षित रिटर्न (CAGR %)",
+        cfg_edu_inf: "शिक्षा खर्च हर साल कितना बढ़ेगा (%)",
+        cfg_deg_cost: "आज की कॉलेज डिग्री की लागत (₹)",
+        cfg_term_cost: "₹1 करोड़ प्योर टर्म प्लान की सालाना लागत (₹)",
+        cfg_wa_number: "आपका व्हाट्सऐप नंबर (देश कोड के साथ)",
+        btn_apply: "लागू करें और बंद करें",
+        banner_title: "विशेषज्ञ पोर्टफोलियो और टैक्स सलाह",
+        banner_text: "व्हाट्सऐप बॉट जैसा ही डेटा। यहाँ सेव करें तो सलाहकार के पास पूरा रिपोर्ट पहले से होगा जब आप मैसेज करेंगे।",
+        banner_btn: "🌐 बुद्धदेव एसोसिएट्स से बात करें",
+        profile_title: "👤 आपके परिवार की जानकारी",
+        profile_badge: "व्हाट्सऐप बॉट से जुड़ा",
+        sec_id: "1. आप कौन हैं?",
+        sec_income: "2. मासिक आय (₹)",
+        sec_wealth: "3. बचत और कर्ज (₹)",
+        sec_policy: "4. पुरानी जीवन बीमा पॉलिसी (अगर है)",
+        lbl_name: "आपका पूरा नाम",
+        lbl_mobile: "मोबाइल नंबर (10 अंक)",
+        lbl_email: "ईमेल (वैकल्पिक)",
+        lbl_age: "आपकी उम्र (वर्ष)",
+        lbl_parents: "बुजुर्ग माता-पिता कितने?",
+        lbl_children: "बच्चे कितने?",
+        lbl_salary: "हाथ में आने वाला वेतन",
+        lbl_business: "व्यापार / दुकान का मुनाफा",
+        lbl_other: "अन्य आय (किराया / फ्रीलांस / खेत)",
+        lbl_cash: "नकद + फिक्स्ड डिपॉजिट बचत",
+        lbl_invest: "निवेश (PPF / शेयर / सोना)",
+        lbl_home: "होम लोन बाकी राशि",
+        lbl_toxic: "महंगा कर्ज (गोल्ड / पर्सनल / क्रेडिट कार्ड)",
+        lbl_living: "मासिक घर का खर्च",
+        lbl_premium: "सालाना प्रीमियम जो आप देते हैं (₹)",
+        lbl_paid: "कितने साल का प्रीमियम भर चुके",
+        lbl_term: "पॉलिसी की कुल साल",
+        lbl_sa: "सम एश्योर्ड (कवर राशि)",
+        lbl_mat: "अपेक्षित मैच्योरिटी राशि (वैकल्पिक)",
+        rb_inc: "मासिक आय",
+        rb_ast: "कुल बचत",
+        rb_debt: "कुल कर्ज",
+        rb_nw: "नेट वर्थ",
+        tab1: "📊 1. स्मार्ट बजट",
+        tab2: "🔄 2. पुरानी पॉलिसी जाँच",
+        tab3: "🛡️ 3. परिवार सुरक्षा",
+        tab4: "📋 4. एक्शन + जोखिम",
+        road_title: "📋 आपका एक्शन प्लान + भविष्य के जोखिम",
+        edu_shock_title: "🎓 शिक्षा खर्च का झटका (<span id=\"edu_inf_lbl\">10</span>% प्रति वर्ष)",
+        risk_title: "⚠️ बढ़ती कीमतें आपके परिवार के लिए क्यों खतरनाक हैं",
+        risk_1: "<b>1. अस्पताल का बिल</b> — इलाज का खर्च वेतन से तेज बढ़ता है। एक बीमारी महंगे कर्ज में डाल सकती है।",
+        risk_2: "<b>2. बच्चों की शिक्षा</b> — स्कूल, कॉलेज और कोचिंग फीस हर साल बढ़ती रहती है।",
+        risk_3: "<b>3. रिटायरमेंट</b> — आज का ₹30,000 का जीवन 20–25 साल बाद ₹1.5–2 लाख प्रति माह माँग सकता है।",
+        risk_4: "<b>4. कमाने वाले सदस्य की कमी</b> — छोटा जीवन बीमा महंगाई के कारण हर साल कमजोर पड़ता है।",
+        risk_5: "<b>5. किराया और होम लोन</b> — किराया और मरम्मत का खर्च लगातार बढ़ता है।",
+        risk_6: "<b>6. खाना और रोज के सामान</b> — बढ़ती कीमतें हर महीने बचत के लिए कम पैसे छोड़ती हैं।",
+        risk_7: "<b>7. इमरजेंसी फंड</b> — आज की ₹2–3 लाख बचत 8–10 साल बाद बहुत कम काम आएगी।",
+        risk_8: "<b>8. पारिवारिक जिम्मेदारियाँ</b> — शादी, माता-पिता का सहारा और अन्य जरूरतें महंगी हो जाती हैं।",
+        risk_9: "<b>9. यात्रा और वाहन</b> — पेट्रोल, मेंटेनेंस और बीमा लगातार बढ़ते हैं।",
+        risk_10: "<b>10. जीवनशैली</b> — फोन, इंटरनेट, टीवी जैसी छोटी लागतें धीरे-धीरे बढ़ती हैं।",
+        cta_advisor: "व्हाट्सऐप पर सलाहकार से बात करें",
+        cta_sip: "सटीक SIP प्लान लें",
+        cta_team: "हमारी टीम से जुड़ें",
+        cta_note: "व्हाट्सऐप बॉट के साथ डेटा साझा है। जब आप मैसेज करेंगे तो सलाहकार के पास यह रिपोर्ट पहले से होगी।"
+      },
+      bn: {
+        app_title: "পরিবার রক্ষক",
+        app_subtitle: "ওয়েব + হোয়াটসঅ্যাপ একীভূত সংস্করণ",
+        btn_settings: "সেটিংস", btn_demo: "ডেমো", btn_calc: "গণনা", btn_save: "সেভ", btn_csv: "CSV", btn_print: "PDF", btn_wa: "হোয়াটসঅ্যাপ",
+        settings_title: "উন্নত সেটিংস",
+        cfg_equity: "শেয়ার বাজার থেকে প্রত্যাশিত রিটার্ন (CAGR %)",
+        cfg_edu_inf: "শিক্ষা খরচ প্রতি বছর কত বাড়বে (%)",
+        cfg_deg_cost: "আজকের কলেজ ডিগ্রির খরচ (₹)",
+        cfg_term_cost: "₹১ কোটি পিওর টার্ম প্ল্যানের বার্ষিক খরচ (₹)",
+        cfg_wa_number: "আপনার হোয়াটসঅ্যাপ নম্বর (দেশ কোডসহ)",
+        btn_apply: "প্রয়োগ করুন ও বন্ধ করুন",
+        banner_title: "বিশেষজ্ঞ পোর্টফোলিও ও ট্যাক্স পরামর্শ",
+        banner_text: "হোয়াটসঅ্যাপ বটের মতোই ডেটা। এখানে সেভ করলে উপদেষ্টার কাছে পুরো রিপোর্ট আগে থেকেই থাকবে যখন আপনি মেসেজ করবেন।",
+        banner_btn: "🌐 বুদ্ধদেব অ্যাসোসিয়েটসের সাথে কথা বলুন",
+        profile_title: "👤 আপনার পরিবারের তথ্য",
+        profile_badge: "হোয়াটসঅ্যাপ বটের সাথে যুক্ত",
+        sec_id: "১. আপনি কে?",
+        sec_income: "২. মাসিক আয় (₹)",
+        sec_wealth: "৩. সঞ্চয় ও ঋণ (₹)",
+        sec_policy: "৪. পুরনো জীবন বীমা পলিসি (যদি থাকে)",
+        lbl_name: "আপনার পুরো নাম",
+        lbl_mobile: "মোবাইল নম্বর (১০ সংখ্যা)",
+        lbl_email: "ইমেইল (ঐচ্ছিক)",
+        lbl_age: "আপনার বয়স (বছর)",
+        lbl_parents: "বৃদ্ধ বাবা-মা কতজন?",
+        lbl_children: "সন্তান কতজন?",
+        lbl_salary: "হাতে পাওয়া বেতন",
+        lbl_business: "ব্যবসা / দোকানের লাভ",
+        lbl_other: "অন্যান্য আয় (ভাড়া / ফ্রিল্যান্স / খামার)",
+        lbl_cash: "নগদ + ফিক্সড ডিপোজিট সঞ্চয়",
+        lbl_invest: "বিনিয়োগ (PPF / শেয়ার / সোনা)",
+        lbl_home: "হোম লোন বাকি টাকা",
+        lbl_toxic: "উচ্চ সুদের ঋণ (গোল্ড / পার্সোনাল / ক্রেডিট কার্ড)",
+        lbl_living: "মাসিক বাড়ির খরচ",
+        lbl_premium: "বার্ষিক প্রিমিয়াম যা আপনি দেন (₹)",
+        lbl_paid: "কত বছরের প্রিমিয়াম দিয়েছেন",
+        lbl_term: "পলিসির মোট বছর",
+        lbl_sa: "সাম অ্যাসিওয়ার্ড (কভার পরিমাণ)",
+        lbl_mat: "প্রত্যাশিত মেচুরিটি পরিমাণ (ঐচ্ছিক)",
+        rb_inc: "মাসিক আয়",
+        rb_ast: "মোট সঞ্চয়",
+        rb_debt: "মোট ঋণ",
+        rb_nw: "নেট ওয়ার্থ",
+        tab1: "📊 ১. স্মার্ট বাজেট",
+        tab2: "🔄 ২. পুরনো পলিসি চেক",
+        tab3: "🛡️ ৩. পরিবার সুরক্ষা",
+        tab4: "📋 ৪. অ্যাকশন + ঝুঁকি",
+        road_title: "📋 আপনার অ্যাকশন প্ল্যান + ভবিষ্যৎ ঝুঁকি",
+        edu_shock_title: "🎓 শিক্ষা খরচের ধাক্কা (<span id=\"edu_inf_lbl\">10</span>% প্রতি বছর)",
+        risk_title: "⚠️ বাড়তি দাম আপনার পরিবারের জন্য কেন বিপজ্জনক",
+        risk_1: "<b>১. হাসপাতালের বিল</b> — চিকিৎসার খরচ বেতনের চেয়ে দ্রুত বাড়ে। এক অসুখ উচ্চ সুদের ঋণে ফেলতে পারে।",
+        risk_2: "<b>২. সন্তানের শিক্ষা</b> — স্কুল, কলেজ ও কোচিং ফি প্রতি বছর বাড়ে।",
+        risk_3: "<b>৩. অবসর</b> — আজকের ₹৩০,০০০ জীবনযাত্রা ২০–২৫ বছর পর মাসে ₹১.৫–২ লাখ চাইতে পারে।",
+        risk_4: "<b>৪. উপার্জনকারীর অভাব</b> — ছোট জীবন বীমা মুদ্রাস্ফীতির কারণে প্রতি বছর দুর্বল হয়।",
+        risk_5: "<b>৫. বাড়ি ভাড়া ও হোম লোন</b> — ভাড়া ও মেরামতের খরচ বাড়তেই থাকে।",
+        risk_6: "<b>৬. খাবার ও দৈনন্দিন চাহিদা</b> — বাড়তি দাম প্রতি মাসে সঞ্চয়ের জন্য কম টাকা রাখে।",
+        risk_7: "<b>৭. জরুরি তহবিল</b> — আজকের ₹২–৩ লাখ সঞ্চয় ৮–১০ বছর পর অনেক কম কাজে আসবে।",
+        risk_8: "<b>৮. পারিবারিক দায়িত্ব</b> — বিয়ে, বাবা-মার সহায়তা ও অন্যান্য প্রয়োজন ব্যয়বহুল হয়ে ওঠে।",
+        risk_9: "<b>৯. যাতায়াত ও যানবাহন</b> — জ্বালানি, রক্ষণাবেক্ষণ ও বীমা বাড়তেই থাকে।",
+        risk_10: "<b>১০. জীবনযাত্রা</b> — ফোন, ইন্টারনেট, টিভি-র মতো ছোট খরচ ধীরে ধীরে বাড়ে।",
+        cta_advisor: "হোয়াটসঅ্যাপে উপদেষ্টার সাথে কথা বলুন",
+        cta_sip: "সঠিক SIP প্ল্যান নিন",
+        cta_team: "আমাদের টিমে যোগ দিন",
+        cta_note: "হোয়াটসঅ্যাপ বটের সাথে ডেটা শেয়ার করা। আপনি মেসেজ করলে উপদেষ্টার কাছে এই রিপোর্ট আগে থেকেই থাকবে।"
+      },
+      mr: {
+        app_title: "परिवार रक्षक",
+        app_subtitle: "वेब + व्हॉट्सअॅप एकत्रित आवृत्ती",
+        btn_settings: "सेटिंग्ज", btn_demo: "डेमो", btn_calc: "गणना", btn_save: "सेव्ह", btn_csv: "CSV", btn_print: "PDF", btn_wa: "व्हॉट्सअॅप",
+        settings_title: "प्रगत सेटिंग्ज",
+        cfg_equity: "शेअर बाजारातून अपेक्षित परतावा (CAGR %)",
+        cfg_edu_inf: "शिक्षण खर्च दरवर्षी किती वाढेल (%)",
+        cfg_deg_cost: "आजची कॉलेज पदवीची किंमत (₹)",
+        cfg_term_cost: "₹१ कोटी प्युअर टर्म प्लॅनची वार्षिक किंमत (₹)",
+        cfg_wa_number: "तुमचा व्हॉट्सअॅप नंबर (देश कोडसह)",
+        btn_apply: "लागू करा आणि बंद करा",
+        banner_title: "तज्ज्ञ पोर्टफोलिओ आणि कर सल्ला",
+        banner_text: "व्हॉट्सअॅप बॉटसारखाच डेटा. इथे सेव्ह केल्यावर सल्लागारांकडे पूर्ण अहवाल आधीच असेल जेव्हा तुम्ही मेसेज कराल.",
+        banner_btn: "🌐 बुद्धदेव असोसिएट्सशी बोला",
+        profile_title: "👤 तुमच्या कुटुंबाची माहिती",
+        profile_badge: "व्हॉट्सअॅप बॉटशी जोडलेले",
+        sec_id: "१. तुम्ही कोण आहात?",
+        sec_income: "२. मासिक उत्पन्न (₹)",
+        sec_wealth: "३. बचत आणि कर्ज (₹)",
+        sec_policy: "४. जुनी जीवन विमा पॉलिसी (असल्यास)",
+        lbl_name: "तुमचे पूर्ण नाव",
+        lbl_mobile: "मोबाइल नंबर (१० अंक)",
+        lbl_email: "ईमेल (पर्यायी)",
+        lbl_age: "तुमचे वय (वर्षे)",
+        lbl_parents: "वृद्ध पालक किती?",
+        lbl_children: "मुले किती?",
+        lbl_salary: "हातात येणारा पगार",
+        lbl_business: "व्यवसाय / दुकानाचा नफा",
+        lbl_other: "इतर उत्पन्न (भाडे / फ्रीलान्स / शेत)",
+        lbl_cash: "रोख + फिक्स्ड डिपॉझिट बचत",
+        lbl_invest: "गुंतवणूक (PPF / शेअर्स / सोने)",
+        lbl_home: "होम लोन शिल्लक",
+        lbl_toxic: "जास्त व्याजाचे कर्ज (गोल्ड / पर्सनल / क्रेडिट कार्ड)",
+        lbl_living: "मासिक घरगुती खर्च",
+        lbl_premium: "वार्षिक प्रीमियम जे तुम्ही देता (₹)",
+        lbl_paid: "किती वर्षांचे प्रीमियम भरले",
+        lbl_term: "पॉलिसीची एकूण वर्षे",
+        lbl_sa: "सम अॅश्युअर्ड (कव्हर रक्कम)",
+        lbl_mat: "अपेक्षित परिपक्वता रक्कम (पर्यायी)",
+        rb_inc: "मासिक उत्पन्न",
+        rb_ast: "एकूण बचत",
+        rb_debt: "एकूण कर्ज",
+        rb_nw: "नेट वर्थ",
+        tab1: "📊 १. स्मार्ट बजेट",
+        tab2: "🔄 २. जुनी पॉलिसी तपासणी",
+        tab3: "🛡️ ३. कुटुंब संरक्षण",
+        tab4: "📋 ४. अॅक्शन + धोके",
+        road_title: "📋 तुमचा अॅक्शन प्लॅन + भविष्यातील धोके",
+        edu_shock_title: "🎓 शिक्षण खर्चाचा धक्का (<span id=\"edu_inf_lbl\">10</span>% प्रति वर्ष)",
+        risk_title: "⚠️ वाढत्या किंमती तुमच्या कुटुंबासाठी का धोकादायक आहेत",
+        risk_1: "<b>१. रुग्णालयाचे बिल</b> — उपचार खर्च पगारापेक्षा वेगाने वाढतो. एक आजार महागड्या कर्जात टाकू शकतो.",
+        risk_2: "<b>२. मुलांचे शिक्षण</b> — शाळा, कॉलेज आणि कोचिंग फी दरवर्षी वाढत राहते.",
+        risk_3: "<b>३. निवृत्ती</b> — आजचा ₹३०,००० जीवनमान २०–२५ वर्षांनंतर महिन्याला ₹१.५–२ लाख मागू शकतो.",
+        risk_4: "<b>४. कमावणार्‍या सदस्याची कमतरता</b> — छोटा जीवन विमा महागाईमुळे दरवर्षी कमकुवत होतो.",
+        risk_5: "<b>५. भाडे आणि होम लोन</b> — भाडे आणि दुरुस्ती खर्च सतत वाढतो.",
+        risk_6: "<b>६. अन्न आणि रोजच्या गरजा</b> — वाढत्या किंमती दर महिन्याला बचतीसाठी कमी पैसे ठेवतात.",
+        risk_7: "<b>७. आपत्कालीन निधी</b> — आजची ₹२–३ लाख बचत ८–१० वर्षांनंतर खूप कमी उपयोगी पडेल.",
+        risk_8: "<b>८. कौटुंबिक जबाबदाऱ्या</b> — लग्न, पालकांचा आधार आणि इतर गरजा महाग होतात.",
+        risk_9: "<b>९. प्रवास आणि वाहन</b> — पेट्रोल, देखभाल आणि विमा सतत वाढतात.",
+        risk_10: "<b>१०. जीवनशैली</b> — फोन, इंटरनेट, टीव्ही सारखे छोटे खर्च हळूहळू वाढतात.",
+        cta_advisor: "व्हॉट्सअॅपवर सल्लागाराशी बोला",
+        cta_sip: "अचूक SIP प्लॅन घ्या",
+        cta_team: "आमच्या टीममध्ये सामील व्हा",
+        cta_note: "व्हॉट्सअॅप बॉटसोबत डेटा शेअर केला आहे. तुम्ही मेसेज केल्यावर सल्लागाराकडे हा अहवाल आधीच असेल."
+      },
+      gu: {
+        app_title: "પરિવાર રક્ષક",
+        app_subtitle: "વેબ + વોટ્સએપ એકીકૃત આવૃત્તિ",
+        btn_settings: "સેટિંગ્સ", btn_demo: "ડેમો", btn_calc: "ગણતરી", btn_save: "સેવ", btn_csv: "CSV", btn_print: "PDF", btn_wa: "વોટ્સએપ",
+        settings_title: "અદ્યતન સેટિંગ્સ",
+        cfg_equity: "શેર બજારથી અપેક્ષિત વળતર (CAGR %)",
+        cfg_edu_inf: "શિક્ષણ ખર્ચ દર વર્ષે કેટલો વધશે (%)",
+        cfg_deg_cost: "આજની કોલેજ ડિગ્રીની કિંમત (₹)",
+        cfg_term_cost: "₹૧ કરોડ પ્યોર ટર્મ પ્લાનની વાર્ષિક કિંમત (₹)",
+        cfg_wa_number: "તમારો વોટ્સએપ નંબર (દેશ કોડ સાથે)",
+        btn_apply: "લાગુ કરો અને બંધ કરો",
+        banner_title: "નિષ્ણાત પોર્ટફોલિયો અને ટેક્સ સલાહ",
+        banner_text: "વોટ્સએપ બોટ જેવો જ ડેટા. અહીં સેવ કરો તો સલાહકાર પાસે પૂરો રિપોર્ટ પહેલેથી હશે જ્યારે તમે મેસેજ કરશો.",
+        banner_btn: "🌐 બુદ્ધદેવ એસોસિયેટ્સ સાથે વાત કરો",
+        profile_title: "👤 તમારા પરિવારની માહિતી",
+        profile_badge: "વોટ્સએપ બોટ સાથે જોડાયેલ",
+        sec_id: "૧. તમે કોણ છો?",
+        sec_income: "૨. માસિક આવક (₹)",
+        sec_wealth: "૩. બચત અને લોન (₹)",
+        sec_policy: "૪. જૂની જીવન વીમા પોલિસી (જો હોય)",
+        lbl_name: "તમારું પૂરું નામ",
+        lbl_mobile: "મોબાઇલ નંબર (૧૦ અંક)",
+        lbl_email: "ઇમેઇલ (વૈકલ્પિક)",
+        lbl_age: "તમારી ઉંમર (વર્ષ)",
+        lbl_parents: "વૃદ્ધ માતા-પિતા કેટલા?",
+        lbl_children: "બાળકો કેટલા?",
+        lbl_salary: "હાથમાં આવતો પગાર",
+        lbl_business: "વ્યવસાય / દુકાનનો નફો",
+        lbl_other: "અન્ય આવક (ભાડું / ફ્રીલાન્સ / ખેતર)",
+        lbl_cash: "રોકડ + ફિક્સ્ડ ડિપોઝિટ બચત",
+        lbl_invest: "રોકાણ (PPF / શેર / સોનું)",
+        lbl_home: "હોમ લોન બાકી રકમ",
+        lbl_toxic: "ઊંચા વ્યાજની લોન (ગોલ્ડ / પર્સનલ / ક્રેડિટ કાર્ડ)",
+        lbl_living: "માસિક ઘરનો ખર્ચ",
+        lbl_premium: "વાર્ષિક પ્રીમિયમ જે તમે ચૂકવો છો (₹)",
+        lbl_paid: "કેટલા વર્ષનું પ્રીમિયમ ભર્યું",
+        lbl_term: "પોલિસીના કુલ વર્ષ",
+        lbl_sa: "સમ એશ્યોર્ડ (કવર રકમ)",
+        lbl_mat: "અપેક્ષિત મેચ્યુરિટી રકમ (વૈકલ્પિક)",
+        rb_inc: "માસિક આવક",
+        rb_ast: "કુલ બચત",
+        rb_debt: "કુલ લોન",
+        rb_nw: "નેટ વર્થ",
+        tab1: "📊 ૧. સ્માર્ટ બજેટ",
+        tab2: "🔄 ૨. જૂની પોલિસી તપાસ",
+        tab3: "🛡️ ૩. પરિવાર સુરક્ષા",
+        tab4: "📋 ૪. એક્શન + જોખમો",
+        road_title: "📋 તમારો એક્શન પ્લાન + ભવિષ્યના જોખમો",
+        edu_shock_title: "🎓 શિક્ષણ ખર્ચનો આંચકો (<span id=\"edu_inf_lbl\">10</span>% પ્રતિ વર્ષ)",
+        risk_title: "⚠️ વધતી કિંમતો તમારા પરિવાર માટે કેમ જોખમી છે",
+        risk_1: "<b>૧. હોસ્પિટલનું બિલ</b> — સારવારનો ખર્ચ પગાર કરતાં ઝડપથી વધે છે. એક બીમારી ઊંચા વ્યાજની લોનમાં ધકેલી શકે.",
+        risk_2: "<b>૨. બાળકોની શિક્ષા</b> — સ્કૂલ, કોલેજ અને કોચિંગ ફી દર વર્ષે વધતી રહે છે.",
+        risk_3: "<b>૩. નિવૃત્તિ</b> — આજનું ₹૩૦,૦૦૦ જીવન ૨૦–૨૫ વર્ષ પછી મહિને ₹૧.૫–૨ લાખ માંગી શકે.",
+        risk_4: "<b>૪. કમાતા સભ્યની ખોટ</b> — નાનું જીવન વીમો મોંઘવારીને કારણે દર વર્ષે નબળો પડે છે.",
+        risk_5: "<b>૫. ભાડું અને હોમ લોન</b> — ભાડું અને મરામતનો ખર્ચ વધતો જ રહે છે.",
+        risk_6: "<b>૬. ખોરાક અને રોજીંદી જરૂરિયાતો</b> — વધતી કિંમતો દર મહિને બચત માટે ઓછા પૈસા રાખે છે.",
+        risk_7: "<b>૭. કટોકટી ફંડ</b> — આજની ₹૨–૩ લાખ બચત ૮–૧૦ વર્ષ પછી ખૂબ ઓછી કામ આવશે.",
+        risk_8: "<b>૮. પારિવારિક જવાબદારીઓ</b> — લગ્ન, માતા-પિતાનો આધાર અને અન્ય જરૂરિયાતો મોંઘી થાય છે.",
+        risk_9: "<b>૯. મુસાફરી અને વાહન</b> — પેટ્રોલ, મેન્ટેનન્સ અને વીમો વધતા જ રહે છે.",
+        risk_10: "<b>૧૦. જીવનશૈલી</b> — ફોન, ઇન્ટરનેટ, ટીવી જેવા નાના ખર્ચ ધીમે ધીમે વધે છે.",
+        cta_advisor: "વોટ્સએપ પર સલાહકાર સાથે વાત કરો",
+        cta_sip: "ચોક્કસ SIP પ્લાન લો",
+        cta_team: "અમારી ટીમમાં જોડાઓ",
+        cta_note: "વોટ્સએપ બોટ સાથે ડેટા શેર થયેલ છે. તમે મેસેજ કરો ત્યારે સલાહકાર પાસે આ રિપોર્ટ પહેલેથી હશે."
+      }
+    };
+
+    let currentLang = "en";
+
+    function changeLanguage(lang) {
+      currentLang = lang || "en";
+      if (!i18n[currentLang]) currentLang = "en";
+      document.documentElement.lang = currentLang;
+      const dict = i18n[currentLang];
+
+      // Update all data-i18n elements
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key] !== undefined) {
+          el.innerHTML = dict[key];
+        }
+      });
+
+      // Update risk items by order
+      const riskKeys = ["risk_1","risk_2","risk_3","risk_4","risk_5","risk_6","risk_7","risk_8","risk_9","risk_10"];
+      document.querySelectorAll(".risk-item > div:last-child").forEach((el, idx) => {
+        if (riskKeys[idx] && dict[riskKeys[idx]]) {
+          el.innerHTML = dict[riskKeys[idx]];
+        }
+      });
+
+      // Keep select in sync
+      const sel = document.getElementById("app_lang");
+      if (sel) sel.value = currentLang;
+
+      // Re-run calc so dynamic texts stay correct
+      if (typeof runAllCalculations === "function") runAllCalculations(false);
+    }
+
+    // Auto-detect browser language on first load
+    function autoDetectLanguage() {
+      const saved = localStorage.getItem("pr_lang");
+      if (saved && i18n[saved]) {
+        changeLanguage(saved);
+        return;
+      }
+      const browser = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+      let lang = "en";
+      if (browser.startsWith("hi")) lang = "hi";
+      else if (browser.startsWith("bn")) lang = "bn";
+      else if (browser.startsWith("mr")) lang = "mr";
+      else if (browser.startsWith("gu")) lang = "gu";
+      changeLanguage(lang);
+    }
+
+    // Remember user choice
+    const origChange = changeLanguage;
+    changeLanguage = function(lang) {
+      origChange(lang);
+      try { localStorage.setItem("pr_lang", lang); } catch(e) {}
+    };
+
+
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('settings_modal');
+      const btn = e.target.closest('.btn-preset');
+      if (panel.classList.contains('open') && !panel.contains(e.target) && !btn) {
+        panel.classList.remove('open');
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      autoDetectLanguage();
+      updateWhatsAppLinks();
+      runAllCalculations(false);
+    });
+  </script>
+</body>
+</html>

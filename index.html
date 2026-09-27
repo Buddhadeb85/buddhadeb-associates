@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buddhadeb Associates | Financial Consultancy</title>
+    <meta name="description" content="Professional financial consultancy providing expert guidance in Insurance, FDs, Mutual Funds, Bonds, and strategic investments with over 17 years of banking expertise.">
+    
+    <!-- Google Fonts: Playfair Display for elegant headings, Inter for clean body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS for rapid, modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration for Custom Branding -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0A192F',    // Deep Navy Blue for trust and professionalism
+                            light: '#F8FAFC',   // Crisp White/Light gray for backgrounds
+                            gold: '#D4AF37',    // Elegant Gold for accents and CTAs
+                            goldHover: '#B5952F',
+                            emerald: '#10B981', // Emerald green for growth/financial success
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Hero Section Gradient Background */
+        .hero-bg {
+            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.95)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+        }
+
+        /* Smooth reveal animation for scrolling */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo area -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="font-serif font-bold text-2xl text-brand-navy tracking-tight">
+                        Buddhadeb <span class="text-brand-gold">Associates</span>
+                    </span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-brand-gold font-medium transition-colors">Home</a>
+                    <a href="#services" class="text-gray-700 hover:text-brand-gold font-medium transition-colors">Services</a>
+                    <a href="#parivar-rakshak" class="text-gray-700 hover:text-brand-gold font-medium transition-colors">Parivar Rakshak</a>
+                    <a href="#about" class="text-gray-700 hover:text-brand-gold font-medium transition-colors">About Us</a>
+                    <a href="#contact" class="text-gray-700 hover:text-brand-gold font-medium transition-colors">Contact</a>
+                </nav>
+
+                <!-- CTA Button (Desktop) -->
+                <div class="hidden md:flex">
+                    <a href="#contact" class="bg-brand-navy text-white px-6 py-2.5 rounded-md hover:bg-brand-gold transition-colors duration-300 font-medium shadow-md hover:shadow-lg">
+                        Consult Now
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-brand-navy focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#home" class="block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-gold hover:bg-gray-50 rounded-md">Home</a>
+                <a href="#services" class="block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-gold hover:bg-gray-50 rounded-md">Services</a>
+                <a href="#parivar-rakshak" class="block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-gold hover:bg-gray-50 rounded-md">Parivar Rakshak</a>
+                <a href="#about" class="block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-gold hover:bg-gray-50 rounded-md">About Us</a>
+                <a href="#contact" class="block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-gold hover:bg-gray-50 rounded-md">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center pt-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 w-full reveal">
+            <div class="inline-block mb-4 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-brand-gold text-sm font-semibold tracking-wider uppercase">
+                <i class="fas fa-chart-line mr-2"></i> Strategic Wealth Management
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 font-serif max-w-4xl mx-auto">
+                Secure Your Legacy With <span class="text-brand-gold">Trusted</span> Financial Guidance
+            </h1>
+            
+            <p class="mt-4 text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+                Empowering your financial future with <strong class="text-white font-semibold">over 17 years of deep banking industry expertise</strong>. We provide tailored solutions to grow, protect, and manage your wealth effectively.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 flex-wrap">
+                <a href="#contact" class="bg-brand-gold text-brand-navy hover:bg-brand-goldHover px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_25px_rgba(212,175,55,0.5)] flex items-center justify-center">
+                    Get a Free Consultation <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#parivar-rakshak" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt mr-2"></i> Free Family Audit
+                </a>
+                <a href="#services" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-brand-navy px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 flex items-center justify-center">
+                    Explore Our Services
+                </a>
+            </div>
+        </div>
+        
+        <!-- Decorative bottom wave/fade -->
+        <div class="absolute bottom-0 w-full h-24 bg-gradient-to-t from-brand-light to-transparent"></div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-24 bg-brand-light relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-brand-gold font-semibold tracking-wide uppercase text-sm mb-2">Expertise You Can Count On</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-brand-navy font-serif mb-4">Our Investment Solutions</h3>
+                <div class="w-20 h-1 bg-brand-gold mx-auto mb-6"></div>
+                <p class="text-gray-600 text-lg">We offer a comprehensive suite of financial services designed to maximize your returns while meticulously managing risk profiles tailored to your needs.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service Card 1: Insurance -->
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 group reveal">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-navy transition-colors duration-300">
+                        <i class="fas fa-shield-alt text-2xl text-brand-navy group-hover:text-brand-gold transition-colors duration-300"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-navy mb-3 font-serif">Insurance Solutions</h4>
+                    <p class="text-gray-600 leading-relaxed mb-4">Comprehensive life and general insurance planning to protect your family, assets, and secure your peace of mind against life's uncertainties.</p>
+                    <a href="#contact" class="text-brand-emerald font-medium hover:text-brand-navy transition-colors flex items-center text-sm">
+                        Learn more <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 2: FDs -->
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 group reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-navy transition-colors duration-300">
+                        <i class="fas fa-piggy-bank text-2xl text-brand-navy group-hover:text-brand-gold transition-colors duration-300"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-navy mb-3 font-serif">Fixed Deposits (FDs)</h4>
+                    <p class="text-gray-600 leading-relaxed mb-4">Safe, secure, and predictable returns. We guide you towards the best corporate and bank FDs offering optimal interest rates with high safety ratings.</p>
+                    <a href="#contact" class="text-brand-emerald font-medium hover:text-brand-navy transition-colors flex items-center text-sm">
+                        Learn more <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 3: Mutual Funds -->
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 group reveal" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-navy transition-colors duration-300">
+                        <i class="fas fa-chart-pie text-2xl text-brand-navy group-hover:text-brand-gold transition-colors duration-300"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-navy mb-3 font-serif">Mutual Funds</h4>
+                    <p class="text-gray-600 leading-relaxed mb-4">Curated mutual fund portfolios focusing on long-term wealth creation. From equity to debt funds, we align investments with your financial goals.</p>
+                    <a href="#contact" class="text-brand-emerald font-medium hover:text-brand-navy transition-colors flex items-center text-sm">
+                        Learn more <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 4: Bonds -->
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 group reveal">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-navy transition-colors duration-300">
+                        <i class="fas fa-file-contract text-2xl text-brand-navy group-hover:text-brand-gold transition-colors duration-300"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-navy mb-3 font-serif">Bonds & Debentures</h4>
+                    <p class="text-gray-600 leading-relaxed mb-4">Diversify your portfolio with government and highly-rated corporate bonds, ensuring a steady stream of passive income and capital preservation.</p>
+                    <a href="#contact" class="text-brand-emerald font-medium hover:text-brand-navy transition-colors flex items-center text-sm">
+                        Learn more <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 5: Strategic Investment Schemes -->
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 group reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-navy transition-colors duration-300">
+                        <i class="fas fa-chess-knight text-2xl text-brand-navy group-hover:text-brand-gold transition-colors duration-300"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-navy mb-3 font-serif">Strategic Investments</h4>
+                    <p class="text-gray-600 leading-relaxed mb-4">Customized financial schemes including tax-saving investments, retirement planning, and children's education funds designed for your unique lifecycle.</p>
+                    <a href="#contact" class="text-brand-emerald font-medium hover:text-brand-navy transition-colors flex items-center text-sm">
+                        Learn more <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 6: Parivar Rakshak -->
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 group reveal" style="transition-delay: 150ms;">
+                    <div class="w-14 h-14 bg-emerald-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-navy transition-colors duration-300">
+                        <i class="fas fa-users-shield text-2xl text-brand-emerald group-hover:text-brand-gold transition-colors duration-300"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-navy mb-3 font-serif">Parivar Rakshak</h4>
+                    <p class="text-gray-600 leading-relaxed mb-4">Free family financial defence calculator. Check education inflation risk, life cover gap, toxic debt and get a clear action roadmap in minutes.</p>
+                    <a href="#parivar-rakshak" class="text-brand-emerald font-medium hover:text-brand-navy transition-colors flex items-center text-sm">
+                        Open free tool <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Call to Action Card -->
+                <div class="bg-brand-navy rounded-xl p-8 shadow-lg flex flex-col justify-center items-center text-center reveal border border-brand-navy/50" style="transition-delay: 200ms;">
+                    <h4 class="text-2xl font-bold text-white mb-4 font-serif">Need a Custom Strategy?</h4>
+                    <p class="text-gray-300 mb-6">Let's discuss how we can structure a portfolio that perfectly aligns with your vision.</p>
+                    <a href="#contact" class="bg-brand-gold text-brand-navy hover:bg-white px-6 py-3 rounded-md font-semibold transition-colors duration-300 w-full shadow-md">
+                        Book a Session
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PARIVAR RAKSHAK SECTION -->
+    <section id="parivar-rakshak" class="py-24 bg-slate-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20" style="background: radial-gradient(circle at 20% 50%, #10B981 0%, transparent 50%), radial-gradient(circle at 80% 20%, #D4AF37 0%, transparent 40%);"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+                <div class="inline-block mb-4 px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-sm font-semibold tracking-wider uppercase">
+                    <i class="fas fa-shield-alt mr-2"></i> Free Family Defence Tool
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold text-white font-serif mb-4">Parivar Rakshak</h2>
+                <div class="w-20 h-1 bg-brand-gold mx-auto mb-6"></div>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                    A scientific family financial defence calculator for lower-middle-class households. Check education inflation shock, life cover deficit, toxic debt and get a clear action plan — in your language.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6 reveal">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/20 flex items-center justify-center mb-4">
+                        <i class="fas fa-graduation-cap text-emerald-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">Education Inflation Shock</h4>
+                    <p class="text-gray-400 text-sm">See future college cost at 10% inflation and exact SIP needed for each child.</p>
+                </div>
+                <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6 reveal" style="transition-delay: 80ms;">
+                    <div class="w-12 h-12 rounded-lg bg-red-500/20 flex items-center justify-center mb-4">
+                        <i class="fas fa-heartbeat text-red-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">Life Cover (HLV) Gap</h4>
+                    <p class="text-gray-400 text-sm">Find how much pure term cover your family actually needs — not a guess.</p>
+                </div>
+                <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6 reveal" style="transition-delay: 160ms;">
+                    <div class="w-12 h-12 rounded-lg bg-amber-500/20 flex items-center justify-center mb-4">
+                        <i class="fas fa-balance-scale text-amber-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">Sunk-Cost Recovery</h4>
+                    <p class="text-gray-400 text-sm">Check if converting old endowment policy to Paid-Up + Index SIP creates extra wealth.</p>
+                </div>
+                <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6 reveal" style="transition-delay: 240ms;">
+                    <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center mb-4">
+                        <i class="fas fa-list-check text-blue-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">5-Step Action Roadmap</h4>
+                    <p class="text-gray-400 text-sm">Clear priorities: term plan, health buffer, debt prepay, SIP and policy action.</p>
+                </div>
+            </div>
+
+            <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8 md:p-10 reveal">
+                <div class="flex flex-col lg:flex-row items-center gap-8">
+                    <div class="flex-1 text-center lg:text-left">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white font-serif mb-4">Start your free family audit in 3 minutes</h3>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            Available in English, Hindi, Bengali, Marathi and Gujarati. Same tool works on website and WhatsApp. Your data is saved so our advisor can continue the conversation with full context.
+                        </p>
+                        <ul class="text-gray-300 text-sm space-y-2 mb-8 text-left max-w-md mx-auto lg:mx-0">
+                            <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-400 mt-1"></i> Smart 5-tier budget allocation</li>
+                            <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-400 mt-1"></i> Education SIP target for every child</li>
+                            <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-400 mt-1"></i> Toxic debt & emergency runway check</li>
+                            <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-400 mt-1"></i> Instant report + WhatsApp hand-off to advisor</li>
+                        </ul>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="Parivar_Rakshak_Unified_Final.html" target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-gold text-brand-navy hover:bg-white px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 shadow-lg">
+                                <i class="fas fa-calculator mr-2"></i> Open Parivar Rakshak
+                            </a>
+                            <a href="https://wa.me/919999999999?text=Hi%2C%20I%20want%20to%20start%20my%20Parivar%20Rakshak%20family%20audit" target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300">
+                                <i class="fab fa-whatsapp mr-2"></i> Start on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-80 flex-shrink-0">
+                        <div class="bg-slate-800/80 border border-white/10 rounded-xl p-6 text-left">
+                            <p class="text-xs uppercase tracking-wider text-gray-400 mb-3 font-semibold">Sample snapshot</p>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between border-b border-white/10 pb-2"><span class="text-gray-400">Education SIP needed</span><span class="text-amber-300 font-bold">₹27,096/mo</span></div>
+                                <div class="flex justify-between border-b border-white/10 pb-2"><span class="text-gray-400">Life cover deficit</span><span class="text-red-400 font-bold">₹1.2 Cr</span></div>
+                                <div class="flex justify-between border-b border-white/10 pb-2"><span class="text-gray-400">Toxic debt alert</span><span class="text-red-400 font-bold">URGENT</span></div>
+                                <div class="flex justify-between"><span class="text-gray-400">Sunk-cost gain possible</span><span class="text-emerald-400 font-bold">+₹8.4 Lakh</span></div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-4">Numbers change with your real inputs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                
+                <!-- About Image / Visual -->
+                <div class="w-full lg:w-1/2 relative reveal">
+                    <!-- Placeholder using a clean architectural/business structure -->
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1632&auto=format&fit=crop" alt="Buddhadeb Associates Consulting" class="rounded-lg shadow-2xl object-cover h-[500px] w-full relative z-10">
+                    <!-- Decorative background element -->
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-brand-gold/20 rounded-tl-3xl z-0"></div>
+                    <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-brand-navy/5 rounded-br-3xl z-0"></div>
+                    
+                    <!-- Floating badge -->
+                    <div class="absolute bottom-10 -left-8 bg-white p-6 rounded-lg shadow-xl z-20 border border-gray-100 flex items-center gap-4">
+                        <div class="w-12 h-12 bg-brand-gold text-white rounded-full flex items-center justify-center font-bold text-xl">
+                            17+
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium">Years of</p>
+                            <p class="text-brand-navy font-bold text-lg leading-tight">Banking Experience</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Text -->
+                <div class="w-full lg:w-1/2 reveal">
+                    <h2 class="text-brand-gold font-semibold tracking-wide uppercase text-sm mb-2">About Buddhadeb Associates</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-brand-navy font-serif mb-6">Navigating Markets, Securing Futures.</h3>
+                    
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        At <strong class="text-brand-navy">Buddhadeb Associates</strong>, we believe that wealth generation is not just about making money; it's about disciplined planning, deep market insight, and unwavering trust. 
+                    </p>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                        Founded by industry veterans with over 17 years of extensive experience in the core banking sector, our firm bridges the gap between complex financial markets and individual investor goals. We analyze, strategize, and execute investment plans spanning Insurance, Mutual Funds, and Fixed Return assets to ensure your financial security is never left to chance.
+                    </p>
+
+                    <!-- Feature list -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-brand-emerald mt-1"></i>
+                            <span class="text-gray-700 font-medium">Client-First Approach</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-brand-emerald mt-1"></i>
+                            <span class="text-gray-700 font-medium">Data-Driven Insights</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-brand-emerald mt-1"></i>
+                            <span class="text-gray-700 font-medium">Transparent Advisory</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-brand-emerald mt-1"></i>
+                            <span class="text-gray-700 font-medium">Comprehensive Portfolios</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="inline-flex items-center text-brand-navy font-bold border-b-2 border-brand-gold pb-1 hover:text-brand-gold transition-colors">
+                        Speak with our founder <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24 bg-slate-50 relative border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-brand-gold font-semibold tracking-wide uppercase text-sm mb-2">Get In Touch</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-brand-navy font-serif mb-4">Start Your Financial Journey</h3>
+                <div class="w-20 h-1 bg-brand-gold mx-auto"></div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden reveal">
+                <div class="flex flex-col lg:flex-row">
+                    
+                    <!-- Contact Information (Left Panel) -->
+                    <div class="w-full lg:w-2/5 bg-brand-navy p-10 lg:p-12 text-white flex flex-col justify-between relative overflow-hidden">
+                        <!-- Decorative circle -->
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-brand-gold/20 rounded-full blur-2xl"></div>
+                        <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-brand-emerald/20 rounded-full blur-2xl"></div>
+
+                        <div class="relative z-10">
+                            <h4 class="text-2xl font-serif font-bold mb-2">Contact Information</h4>
+                            <p class="text-gray-300 mb-10 text-sm">Fill up the form and our team will get back to you within 24 hours.</p>
+
+                            <div class="space-y-8">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-phone-alt text-brand-gold"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-400 font-medium">Call Us</p>
+                                        <p class="text-lg font-semibold">+91 98765 43210</p>
+                                        <p class="text-xs text-gray-400">Mon-Fri, 9am - 6pm</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-envelope text-brand-gold"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-400 font-medium">Email Us</p>
+                                        <p class="text-lg font-semibold">info@buddhadebassociates.com</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-map-marker-alt text-brand-gold"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-400 font-medium">Office Location</p>
+                                        <p class="text-lg font-semibold leading-snug">123 Financial District,<br>Corporate Tower, Suite 405<br>City, State 123456</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form (Right Panel) -->
+                    <div class="w-full lg:w-3/5 p-10 lg:p-12">
+                        <form id="contactForm" class="space-y-6" onsubmit="event.preventDefault(); alert('In a real environment, this would submit your message securely. Form is currently in demonstration mode.');">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-navy focus:border-brand-navy transition-colors bg-gray-50 focus:bg-white outline-none" placeholder="John">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-navy focus:border-brand-navy transition-colors bg-gray-50 focus:bg-white outline-none" placeholder="Doe">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-navy focus:border-brand-navy transition-colors bg-gray-50 focus:bg-white outline-none" placeholder="john@example.com">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-navy focus:border-brand-navy transition-colors bg-gray-50 focus:bg-white outline-none" placeholder="+91 XXXXX XXXXX">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="interest" class="block text-sm font-medium text-gray-700 mb-1">Primary Area of Interest</label>
+                                <select id="interest" name="interest" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-navy focus:border-brand-navy transition-colors bg-gray-50 focus:bg-white outline-none cursor-pointer">
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="parivar_rakshak">Parivar Rakshak / Family Financial Audit</option>
+                                    <option value="insurance">Insurance Planning</option>
+                                    <option value="fd">Fixed Deposits (FDs)</option>
+                                    <option value="mutual_funds">Mutual Funds</option>
+                                    <option value="bonds">Bonds & Debentures</option>
+                                    <option value="other">Other Investment Schemes</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-navy focus:border-brand-navy transition-colors bg-gray-50 focus:bg-white outline-none resize-none" placeholder="Briefly describe your financial goals or questions..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-brand-navy text-white hover:bg-brand-gold py-4 rounded-md font-semibold text-lg transition-colors duration-300 shadow-md">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#050f1f] text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Branding -->
+                <div class="col-span-1 md:col-span-1">
+                    <span class="font-serif font-bold text-2xl text-white tracking-tight block mb-4">
+                        Buddhadeb <span class="text-brand-gold">Associates</span>
+                    </span>
+                    <p class="text-sm leading-relaxed mb-4">
+                        Guiding you towards financial prosperity with integrity, expertise, and a commitment to your long-term success.
+                    </p>
+                    <!-- Social Links Placeholder -->
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h5 class="text-white font-semibold mb-4 uppercase text-sm tracking-wider">Quick Links</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="hover:text-brand-gold transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-brand-gold transition-colors">About Us</a></li>
+                        <li><a href="#services" class="hover:text-brand-gold transition-colors">Our Services</a></li>
+                        <li><a href="#contact" class="hover:text-brand-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h5 class="text-white font-semibold mb-4 uppercase text-sm tracking-wider">Services</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#parivar-rakshak" class="hover:text-brand-gold transition-colors">Parivar Rakshak (Free Tool)</a></li>
+                        <li><a href="#services" class="hover:text-brand-gold transition-colors">Life & Health Insurance</a></li>
+                        <li><a href="#services" class="hover:text-brand-gold transition-colors">Corporate Fixed Deposits</a></li>
+                        <li><a href="#services" class="hover:text-brand-gold transition-colors">Mutual Fund Advisory</a></li>
+                        <li><a href="#services" class="hover:text-brand-gold transition-colors">Bond Investments</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal/Address -->
+                <div>
+                    <h5 class="text-white font-semibold mb-4 uppercase text-sm tracking-wider">Legal</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-800 text-sm text-center md:text-left flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2026 Buddhadeb Associates. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Designed for professional excellence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Mobile Menu Toggle Logic
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const menuLinks = menu.querySelectorAll('a');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                // Change icon from hamburger to close
+                const icon = btn.querySelector('i');
+                if(menu.classList.contains('hidden')){
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+
+            // Close mobile menu when a link is clicked
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    btn.querySelector('i').classList.remove('fa-times');
+                    btn.querySelector('i').classList.add('fa-bars');
+                });
+            });
+
+            // 2. Sticky Navbar Styling on Scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    navbar.classList.add('shadow-md', 'bg-white/95');
+                    navbar.classList.remove('bg-transparent');
+                } else {
+                    navbar.classList.remove('shadow-md');
+                }
+            });
+
+            // 3. Scroll Reveal Animation Logic
+            // Detects when elements with class 'reveal' enter the viewport
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100; // Trigger point
+                
+                revealElements.forEach((el) => {
+                    const elementTop = el.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        el.classList.add('active');
+                    }
+                });
+            };
+
+            // Initial check on load
+            revealOnScroll();
+            // Check on scroll
+            window.addEventListener('scroll', revealOnScroll);
+        });
+    </script>
+</body>
+</html>
